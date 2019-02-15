@@ -7,7 +7,13 @@
   },
   "devDependencies": {
     "escape-string-regexp": "^1.0.5",
-    "htmllint-cli": "^0.0.7"
+    "htmllint-cli": "^0.0.7",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-google": "^0.12.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4"
   },
   "scripts": {
   },

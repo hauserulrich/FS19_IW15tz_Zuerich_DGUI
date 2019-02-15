@@ -1,0 +1,59 @@
+{
+	"parserOptions":
+	{
+		"ecmaVersion": 6,
+		"sourceType": "script",
+		"ecmaFeatures":
+		{
+			"jsx": true
+		}
+	},
+	"plugins":
+	[
+		"jest"
+	],
+	"env":
+	{
+		"browser": true,
+		"jest/globals": true
+	},
+	"extends": "airbnb",
+	"extends":
+	[
+		"plugin:jest/recommended"
+	],
+	"rules":
+	{
+		"yoda": 
+		[
+			2,
+			"always"
+		],
+		"indent":
+		[
+			"error",
+			"tab"
+		],
+		"no-tabs": "off",
+		"no-plusplus": "off",
+		"brace-style":
+		[
+			2,
+			"allman"
+		],
+		"require-jsdoc":
+		[
+			"error",
+			{
+				"require":
+				{
+					"FunctionDeclaration": true,
+					"MethodDefinition": false,
+					"ClassDeclaration": false,
+					"ArrowFunctionExpression": false,
+					"FunctionExpression": false
+				}
+			}
+		]
+	}
+}
