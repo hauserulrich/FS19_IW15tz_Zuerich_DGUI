@@ -1,16 +1,25 @@
 language: node_js
 node_js:
   - "8"
+cache: npm
 
-#do before testing
-before_script:
-    #install necessary node modules
-    - "npm install"
+jobs:
+  include:
+    - stage: lint
+      script:
+        - "./node_modules/.bin/htmllint ./www/**/*.html"
+        - "./node_modules/.bin/eslint ./www/**/*.js"
+        - "./node_modules/.bin/eslint ./tests/**/*.js"
+        - "./node_modules/.bin/stylelint ./www/**/*.css"
+    - stage: unit test
+      script:
+        - "npm test"
+    - stage: JS doc
+      script: 
+        - "./node_modules/.bin/jsdoc -d ./doc ./www/**/*.js"
 
-#lint all html files in tree
-script:
-  - "./node_modules/.bin/htmllint ./www/**/*.html"
-  - "./node_modules/.bin/eslint ./www/**/*.js"
-  - "./node_modules/.bin/stylelint ./www/**/*.css"
-  - "npm test"
-  - "./node_modules/.bin/jsdoc -d ./jsdoc ./www/**/*.js"
+stages:
+  - name: lint
+  - name: unit test
+  - name: JS doc
+ 
