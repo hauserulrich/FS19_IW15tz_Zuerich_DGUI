@@ -4,7 +4,8 @@
   "description": "project to learn about travis",
   "main": "index.js",
   "dependencies": {
-  },
+  "jsdoc": "^3.5.5"
+},
   "devDependencies": {
     "escape-string-regexp": "^1.0.5",
     "htmllint-cli": "^0.0.7",
