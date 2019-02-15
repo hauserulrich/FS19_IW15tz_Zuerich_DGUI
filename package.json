@@ -13,7 +13,8 @@
     "eslint-config-google": "^0.12.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.0",
-    "eslint-plugin-react": "^7.12.4"
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-jest": "^22.2.2"
   },
   "scripts": {
   },
