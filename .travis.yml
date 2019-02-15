@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "8"
+
+#do before testing
+before_script:
+    #install necessary node modules
+    - "npm install"
+
+#lint all html files in tree
+script:
+  - "./node_modules/.bin/htmllint ./www/**/*.html"
