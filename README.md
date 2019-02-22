@@ -58,4 +58,4 @@ Als Nutzer wird meine verarbeitete Anfrage mit allen nötigen und erfragten Deta
 Als Nutzer kann ich die Ergebnisse kopieren und teilen via Whatsapp, Facebook, Messenger
 
 	
-Hier geht es zum [Kanban Board](http://767727-5.web1.fh-htwchur.ch/kanboard/board/1 "Kanban Board"), um den Backlock zu sehen. 
+Hier geht es zum [Kanban Board](http://767727-5.web1.fh-htwchur.ch/kanboard/board/1 "Kanban Board"), um den Backlog zu sehen. 
