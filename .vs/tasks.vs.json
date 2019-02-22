@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "Task-results",
+      "appliesTo": "www/html/results.html",
+      "type": "launch"
+    }
+  ]
+}
