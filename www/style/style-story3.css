@@ -1,0 +1,56 @@
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans'); */
+/* Alternative to using link in HTML head, 
+source: https://stackoverflow.com/questions/14676613/how-to-import-google-web-font-in-css-file
+Frage: Was ist tatsächlich besser?
+*/
+
+body {
+  background: #abbaab;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #eee, #abbaab);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #eee, #abbaab);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* source: https://uigradients.com/#MetallicToad */
+  font-family: ;
+}
+
+.container {
+  margin-top: 20vh;
+}
+
+.sendbutton {
+  margin: 3em auto;
+}
+
+.my-primary {
+  color: #fff;
+  background-color: #5a605a;
+  border-color: #5a605a;
+}
+
+.my-primary:hover {
+  color: white;
+  background-color: #3a3f3a;
+  border-color: #3a3f3a;
+}
+
+.my-primary:hover {
+  color: white;
+  background-color: #3a3f3a;
+  border-color: #3a3f3a;
+}
+
+.my-primary:focus, .my-primary:active, .my-primary:not(:disabled):not(.disabled):active {
+  color: white;
+  background-color: #4a4f4a;
+  border-color: #4a4f4a;
+}
+
+a.navbar-brand {
+  color: #5a605a;
+}
+
+.navbar-brand:hover {
+  color: #4a4f4a;
+}
