@@ -1,7 +1,7 @@
 {
-  "name": "travislearn",
+  "name": "FS19_IW15tz_Zuerich_DGUI",
   "version": "1.0.0",
-  "description": "project to learn about travis",
+  "description": "project for students to learn web programming and project management, 2019 spring",
   "main": "index.js",
   "dependencies": {
     "jsdoc": "^3.5.5"
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hauserulrich/travislearn.git"
+    "url": "git+https://github.com/hauserulrich/FS19_IW15tz_Zuerich_DGUI.git"
   },
   "keywords": [
     "travis",
@@ -41,7 +41,7 @@
   "author": "Ulrich Hauser-Ehninger",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hauserulrich/travislearn/issues"
+    "url": "https://github.com/hauserulrich/FS19_IW15tz_Zuerich_DGUI/issues"
   },
-  "homepage": "https://github.com/hauserulrich/travislearn#readme"
+  "homepage": "https://github.com/hauserulrich/FS19_IW15tz_Zuerich_DGUI#readme"
 }
