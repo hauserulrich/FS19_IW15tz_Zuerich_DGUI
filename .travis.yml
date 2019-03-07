@@ -16,7 +16,7 @@ jobs:
         - "npm test"
     - stage: JS doc
       script: 
-        - "./node_modules/.bin/jsdoc -d ./doc ./www/**/*.js"
+        - "./node_modules/.bin/jsdoc -d ./jsdoc ./www/**/*.js"
 
 stages:
   - name: lint

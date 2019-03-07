@@ -4,7 +4,12 @@
 
 #directories
 INTERMEDIATE = node_modules
-DOCUMENTATION = doc
+DOCUMENTATION = ./jsdoc
+WEB = ./www
+TESTS = ./tests
+HTML = $(WEB)/html/
+CSS = $(WEB)/css/
+JAVASCRIPT = $(WEB)/js/
 
 .PHONY: list cleanall cleandoc init doc teststyle testhtmlstyle testjsstyle testjstestsstyle testcssstyle
 
@@ -31,7 +36,7 @@ init:
 doc:
 	@make init
 	@echo installing node modules:
-	@./node_modules/.bin/jsdoc -d ./doc ./www/**/*.js
+	@./node_modules/.bin/jsdoc -d $(DOCUMENTATION) $(WEB)/**/*.js
 
 teststyle:
 	@make testhtmlstyle
@@ -42,19 +47,19 @@ teststyle:
 testhtmlstyle:
 	@make init
 	@echo linting html:
-	@./node_modules/.bin/htmllint ./www/**/*.html
+	@./node_modules/.bin/htmllint $(WEB)/**/*.html
 testjsstyle:
 	@make init
 	@echo linting js:
-	@./node_modules/.bin/eslint ./www/**/*.js
+	@./node_modules/.bin/eslint $(WEB)/**/*.js
 testjstestsstyle:
 	@make init
 	@echo linting js unit tests:
-	@./node_modules/.bin/eslint ./tests/**/*.js
+	@./node_modules/.bin/eslint $(TESTS)/**/*.js
 testcssstyle:
 	@make init
 	@echo linting css:
-	@./node_modules/.bin/stylelint ./www/**/*.css
+	@./node_modules/.bin/stylelint $(WEB)/**/*.css
 
 testunits:
 	@make init
