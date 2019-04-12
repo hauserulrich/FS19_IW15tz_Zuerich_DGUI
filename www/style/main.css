@@ -23,13 +23,13 @@ button
 
 .fa-facebook
 {
-	background: #3b5998;
+	background:#3b5998;
 	color: white;
 }
 
 .fa-twitter
 {
-	background: #55acee;
+	background:#55acee;
 	color: white;
 }
 
@@ -78,7 +78,7 @@ button
 .jumbotron
 {
 	/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-	background-image: url("island.jpg");
+	background-image: url('island.jpg');
 	/* Set a specific height */
 	height: 50%;
 	/* Position and center the image to scale nicely on all screens */
