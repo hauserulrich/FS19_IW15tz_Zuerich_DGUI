@@ -10,7 +10,7 @@ body
 button {
             margin-left: 1em;
         }
-        
+
         .fa {
           padding: 10px;
           font-size: 1em;
@@ -20,7 +20,7 @@ button {
           text-decoration: none;
           margin: 5px 2px;
         }
-        
+
         .fa-facebook {
             background: #3B5998;
             color: white;
@@ -32,14 +32,14 @@ button {
         }
 
         .input{
-            margin-left: 1em;           
+            margin-left: 1em;
         }
-        
+
         #place, #activity, #date{
-           border-radius: 1em; 
+           border-radius: 1em;
         }
-        #submitButton{
-            border-radius: 1.5em; 
+        #submit_button{
+            border-radius: 1.5em;
         }
 
 
@@ -80,7 +80,7 @@ button {
 
 /* Place text in the middle of the image */
 .text-center {
-  
+
   color: white;
 }
 
