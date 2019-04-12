@@ -1,14 +1,17 @@
-body {
+body
+{
 	background-color: 'black';
 	/*color: rgb(222, 222, 222);*/
 	color: black;
 }
 
-button {
+button
+{
 	margin-left: 1em;
 }
 
-.fa {
+.fa
+{
 	padding: 10px;
 	font-size: 1em;
 	width: 2em;
