@@ -3,3 +3,86 @@ body
 	background-color: 'black';
 	color: rgb(222, 222, 222);
 }
+
+
+button {
+            margin-left: 1em;
+        }
+        
+        .fa {
+          padding: 10px;
+          font-size: 1em;
+          width: 2em;
+          height: 2em;
+          text-align: center;
+          text-decoration: none;
+          margin: 5px 2px;
+        }
+        
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .input{
+            margin-left: 1em;           
+        }
+        
+        #place, #activity, #date{
+           border-radius: 1em; 
+        }
+        #submitButton{
+            border-radius: 1.5em; 
+        }
+
+
+
+.containerHeader {
+
+  /*background-color: red;*/
+}
+
+.containerWeather {
+  /*background-color: green;*/
+}
+
+
+.rowForm {
+  padding: 1.5em;
+  /* background-color: grey; */
+}
+
+.rowWeather {
+  margin-top: 20px;
+  padding: 1.5em;
+  /* background-color: lightgreen; */
+}
+
+.jumbotron {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: url("island.jpg");
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.text-center {
+  
+  color: white;
+}
+
+.card  {
+  color: black;
+}
