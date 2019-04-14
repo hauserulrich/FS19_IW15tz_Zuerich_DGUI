@@ -23,13 +23,13 @@ button
 
 .fa-facebook
 {
-	background: #3b5998;
+	background: rgb(59, 89, 152); /*was: 3b5998*/
 	color: white;
 }
 
 .fa-twitter
 {
-	background: #55acee;
+	background: rgb(85, 172, 238); /*was: #55acee*/
 	color: white;
 }
 
