@@ -1,10 +1,9 @@
-/**
- * initialisation of the dynamic part of the web site
- *
- */
-function init()
-{
-}
 
-/** initialise */
-window.onload=init;
+$("[data-toggle=popover]").popover({
+    html: true, 
+	content: function() {
+          return $('#popover-content').html();
+        }
+});
+
+

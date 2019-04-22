@@ -5,11 +5,9 @@ body
 	color: black;
 }
 
-button
-{
-	margin-left: 1em;
+.container-fluid{
+	margin-top: 0em;
 }
-
 .fa
 {
 	padding: 10px;
@@ -17,7 +15,6 @@ button
 	width: 2em;
 	height: 2em;
 	text-align: center;
-	text-decoration: none;
 	margin: 5px 2px;
 }
 
@@ -48,9 +45,12 @@ button
 #submit_button
 {
 	border-radius: 1.5em;
+	margin-left: 1em;
 }
 
-
+#plusButton{
+	margin-left: 1em;
+}
 .containerHeader
 {
 	/*background-color: red;*/
