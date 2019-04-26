@@ -46,6 +46,8 @@ body
 {
 	border-radius: 1.5em;
 	margin-left: 1em;
+	background: #FFB6C1;
+	border-color: #FFB6C1;
 }
 
 #plusButton{
