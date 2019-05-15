@@ -24,12 +24,15 @@ function getWeatherJSON(){
 		},
 		success: function (data) {
 			console.log(data);
-			let location = data.observations.location[0].state;
-			$('.card-title:first').text(location);
-			let temp = data.observations.location[0].observation[0].temperature;
-			$('.card-subtitle:first').text(temp);
-			let description = data.observations.location[0].observation[0].description;
+			let location = data.observations.location[0];
+			let city = location.state;
+			$('.card-title:first').text(city);
+			let temp = location.observation[0].temperature;
+			$('.card-subtitle:first').text(temp + " C°");
+			let description = location.observation[0].description;
+			let icon = location.observation[0].iconLink;
 			$('.description:first').text(description);
+			$('.weathericon:first').attr('src', icon);
 		}
 	});
 }
