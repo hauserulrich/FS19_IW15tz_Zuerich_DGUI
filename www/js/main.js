@@ -24,13 +24,19 @@ function getWeatherJSON(){
 		},
 		success: function (data) {
 			console.log(data);
-			let location = data.observations.location[0];
-			let city = location.state;
+			var loc		
+			for (i in data.observations.location) {
+				  if (data.observations.location[i].distance==0){
+				  loc=data.observations.location[i];
+				  }
+				}
+			//let location = data.observations.location[0];
+			let city = loc.state;
 			$('.card-title:first').text(city);
-			let temp = location.observation[0].temperature;
+			let temp = loc.observation[0].temperature;
 			$('.card-subtitle:first').text(temp + " C°");
-			let description = location.observation[0].description;
-			let icon = location.observation[0].iconLink;
+			let description = loc.observation[0].description;
+			let icon = loc.observation[0].iconLink;
 			$('.description:first').text(description);
 			$('.weathericon:first').attr('src', icon);
 		}
