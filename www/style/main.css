@@ -1,15 +1,17 @@
-body
-{
-  background-color: 'black';
-  /*color: rgb(222, 222, 222);*/
+/* Place text in the middle of the image */
+/* line 6, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+body {
+  background-color: "black";
   color: black;
 }
 
-.container-fluid{
+/* line 10, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.container-fluid {
   margin-top: 0em;
 }
-.fa
-{
+
+/* line 13, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.fa {
   padding: 10px;
   font-size: 1em;
   width: 2em;
@@ -18,83 +20,78 @@ body
   margin: 5px 2px;
 }
 
-.fa-facebook
-{
+/* line 21, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.fa-facebook {
   background: #3b5998;
   color: white;
 }
 
-.fa-twitter
-{
+/* line 25, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.fa-twitter {
   background: #55acee;
   color: white;
 }
 
-.input
-{
+/* line 29, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.input {
   margin-left: 1em;
 }
 
-#place,
-#activity,
-#date
-{
+/* line 32, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+#place {
   border-radius: 1em;
 }
 
-#submit_button
-{
+/* line 35, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+#activity {
+  border-radius: 1em;
+}
+
+/* line 38, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+#date {
+  border-radius: 1em;
+}
+
+/* line 41, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+#submit_button {
   border-radius: 1.5em;
   margin-left: 1em;
 }
 
-#plusButton{
+/* line 45, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+#plusButton {
   margin-left: 1em;
 }
-.containerHeader
-{
-  /*background-color: red;*/
-}
 
-.containerWeather
-{
-  /*background-color: green;*/
-}
-
-
-.rowForm
-{
+/* line 48, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.rowForm {
   padding: 1.5em;
-  /* background-color: grey; */
 }
 
-.rowWeather
-{
+/* line 51, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.rowWeather {
   margin-top: 20px;
   padding: 1.5em;
-  /* background-color: lightgreen; */
 }
 
-.jumbotron
-{
-  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: url('island.jpg');
-  /* Set a specific height */
+/* line 55, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.jumbotron {
+  background-image: url("island.jpg");
   height: 50%;
-  /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
 
-/* Place text in the middle of the image */
-.text-center
-{
+/* line 63, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.text-center {
   color: white;
 }
 
-.card
-{
+/* line 66, ../../../../../Git/HTWprojects/FS19_IW15tz_Zuerich_DGUI/www/scss/main.scss */
+.card {
   color: black;
 }
+
+/*# sourceMappingURL=main.css.map */
