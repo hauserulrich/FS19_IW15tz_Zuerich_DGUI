@@ -1,1 +1,102 @@
-body{background-color:"black";color:#000}.container-fluid{margin-top:0em}.fa{padding:10px;font-size:1em;width:2em;height:2em;text-align:center;margin:5px 2px}.fa-facebook{background:#3b5998;color:#fff}.fa-twitter{background:#55acee;color:#fff}.input{margin-left:1em}#place{border-radius:1em}#activity{border-radius:1em}#date{border-radius:1em}#submit_button{border-radius:1.5em;margin-left:1em}#plusButton{margin-left:1em}.rowForm{padding:1.5em}.rowWeather{margin-top:20px;padding:1.5em}.jumbotron{background-image:url("island.jpg");height:50%;background-position:center;background-repeat:no-repeat;background-size:cover;position:relative}.text-center{color:#fff}.card{color:#000}
+body
+{
+	background-color: 'black';
+	/*color: rgb(222, 222, 222);*/
+	color: black;
+}
+
+.container-fluid{
+	margin-top: 0em;
+}
+.fa
+{
+	padding: 10px;
+	font-size: 1em;
+	width: 2em;
+	height: 2em;
+	text-align: center;
+	margin: 5px 2px;
+}
+
+.fa-facebook
+{
+	background: #3b5998;
+	color: white;
+}
+
+.fa-twitter
+{
+	background: #55acee;
+	color: white;
+}
+
+.input
+{
+	margin-left: 1em;
+}
+
+#place,
+#activity,
+#date
+{
+	border-radius: 1em;
+}
+
+#submit_button
+{
+	border-radius: 1.5em;
+	margin-left: 1em;
+	background: #FFB6C1;
+	border-color: #FFB6C1;
+}
+
+#plusButton{
+	margin-left: 1em;
+}
+.containerHeader
+{
+	/*background-color: red;*/
+}
+
+.containerWeather
+{
+	/*background-color: green;*/
+}
+
+
+.rowForm
+{
+	padding: 1.5em;
+	/* background-color: grey; */
+}
+
+.rowWeather
+{
+	margin-top: 20px;
+	padding: 1.5em;
+	/* background-color: lightgreen; */
+}
+
+.jumbotron
+{
+	/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+	background-image: url('island.jpg');
+	/* Set a specific height */
+	height: 50%;
+	/* Position and center the image to scale nicely on all screens */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+/* Place text in the middle of the image */
+.text-center
+{
+	color: white;
+}
+
+.card
+{
+	color: black;
+}
