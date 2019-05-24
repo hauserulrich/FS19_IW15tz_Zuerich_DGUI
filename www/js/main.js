@@ -1,5 +1,6 @@
-var cities=["Berne","Lucerne", "Geneva","Chur","Lugano"];
-var chosenCity="";
+var cities=["Bern","Luzern", "Genf","Chur","Lugano"];
+//var cities=["Chur", "Luzern"];
+var chosenCity;
 var loc;
 
 $("[data-toggle=popover]").popover({
@@ -18,11 +19,12 @@ $(document).ready(function(){
 function cityLoop(){
 	for (i in cities){
 		chosenCity=cities[i];
-		getWeatherJSON();
+		getWeatherJSON(chosenCity);
 	}
 };
 
-function getWeatherJSON(){	
+function getWeatherJSON(chosenCity){
+	//console.log(chosenCity);
 	$.ajax({
 		url: 'https://weather.api.here.com/weather/1.0/report.json',
 		type: 'GET',
@@ -42,8 +44,8 @@ function getWeatherJSON(){
 				  if (data.observations.location[i].distance==0){
 				  loc=data.observations.location[i];
 				  }
-				}
-			createCard();
+				};
+			createCard(chosenCity);
 
 			
 			//let city = loc.state;
@@ -59,7 +61,7 @@ function getWeatherJSON(){
 	});
 };
 
-function createCard(){
+function createCard(chosenCity){
 	var x=document.getElementById("localWeather");
 	var divcolsm=document.createElement("div");
 	x.appendChild(divcolsm);
@@ -76,13 +78,18 @@ function createCard(){
 	var cardtitle=document.createElement("h4");
 	divcardbody.appendChild(cardtitle);
 	cardtitle.className="card-title";
-	//cardtitle.innerHTML="title";
-	cardtitle.innerHTML=loc.state;
+	/*if (loc.city==chosenCity){ //da in den Daten manchmal city und state verwechselt ist, z.B. für Chur, wird hier zuerst geschaut, ob die Daten richtig sind. Ggf. wird statt City State angezeigt.
+		cardtitle.innerHTML=loc.city;
+		}
+	else {
+		cardtitle.innerHTML=loc.state;
+	};*/
+	cardtitle.innerHTML=chosenCity;
+
 
 	var cardsubtitle=document.createElement("h4");
 	divcardbody.appendChild(cardsubtitle);
 	cardsubtitle.className="card-subtitle mb-2 text-muted";
-	//cardsubtitle.innerHTML="subtitle";
 	cardsubtitle.innerHTML=loc.observation[0].temperature+" C°";
 
 	var cardicon=document.createElement("img");
