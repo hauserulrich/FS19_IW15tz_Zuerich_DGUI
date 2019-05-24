@@ -4,7 +4,7 @@ var chosenCity;
 var loc;
 
 $("[data-toggle=popover]").popover({
-    html: true, 
+    html: true,
 	content: function() {
           return $('#popover-content').html();
         }
@@ -39,7 +39,7 @@ function getWeatherJSON(chosenCity){
 		},
 		success: function (data) {
 			console.log(data);
-			//createCard();		
+			//createCard();
 			for (i in data.observations.location) {
 				  if (data.observations.location[i].distance==0){
 				  loc=data.observations.location[i];
@@ -47,7 +47,7 @@ function getWeatherJSON(chosenCity){
 				};
 			createCard(chosenCity);
 
-			
+
 			//let city = loc.state;
 			/*$('.card-title:first').text(city);
 

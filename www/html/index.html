@@ -1,127 +1,154 @@
 <!DOCTYPE html>
 <html lang="de" xmlns="https://www.w3.org/1999/xhtml">
-   <head>
-      <title>FS19_IW15tz_Zuerich_DGUI</title>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!--CSS REFS !-->
-      <link rel="stylesheet" type="text/css" href="..\style\main.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   </head>
-   <body>
-      <div class="jumbotron jumbotron-fluid">
-         <!--START Div Container for the first part of the page-->
-         <div class="containerHeader">
+
+<head>
+    <title>FS19_IW15tz_Zuerich_DGUI</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--CSS REFS !-->
+    <link rel="stylesheet" type="text/css" href="..\style\main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <!--START Div Container for the first part of the page-->
+        <div class="containerHeader">
             <!--START div for icons and title of form-->
             <div class="container-fluid">
-               <!--icon-->
-               <a href="#" class="fa fa-facebook rounded-circle"></a>
-               <a href="#" class="fa fa-twitter rounded-circle"></a>
+                <!--icon-->
+                <a href="#" class="fa fa-facebook rounded-circle"></a>
+                <a href="#" class="fa fa-twitter rounded-circle"></a>
             </div>
             <!--Titel "can i go"-->
             <div class="text-center">
-               <h1>Can I go?</h1>
+                <h1>Can I go?</h1>
             </div>
-         </div>
-         <!--END div for icons and motto-->
-         <!--START Main form-->
-         <div class="container text-center">
+        </div>
+        <!--END div for icons and motto-->
+        <!--START Main form-->
+        <div class="container text-center">
             <!--START Main form ROW 1-->
             <div class="rowForm">
-               <div class="row justify-content-center">
-                  <form class="form-inline">
-                     <div class="form-inline input">
-                        <input type="text" class="form-control col " placeholder="Wohin?" id="place" required>
-                     </div>
-                     <!-- START Fenster WAS? !-->
-                     <div class="form-inline input">
-                        <!-- <input type="text" class="form-control" placeholder="was?"> !-->
-                        <select class="form-control col text-muted"  id="activity" required>
-                           <option value="" disabled selected>Was?</option>
-                           <option>Aktivität 1</option>
-                           <option>Aktivität 2</option>
-                           <option>Aktivität 3</option>
-                           <option>Aktivität 4</option>
-                        </select>
-                     </div>
-                     <!-- END Fenster WAS? !-->
-                     <!-- START Fenster WANN? !-->
-                     <div class="form-inline input">
-                        <input class="form-control col" placeholder="Wann?" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
-                     </div>
-                     <!-- END Fenster WANN? !-->
-                     <!-- START Button mit Plus: Auswahl der Filter bei Suche !-->
-                     <!--
+                <div class="row justify-content-center">
+                    <form class="form-inline">
+                        <div class="form-inline input">
+                            <input type="text" class="form-control col " placeholder="Wohin?" id="place" required>
+                        </div>
+                        <!-- START Fenster WAS? !-->
+                        <div class="form-inline input">
+                            <!-- <input type="text" class="form-control" placeholder="was?"> !-->
+                            <select class="form-control col text-muted" id="activity" required>
+                                <option value="" disabled selected>Was?</option>
+                                <option>Aktivität 1</option>
+                                <option>Aktivität 2</option>
+                                <option>Aktivität 3</option>
+                                <option>Aktivität 4</option>
+                            </select>
+                        </div>
+                        <!-- END Fenster WAS? !-->
+                        <!-- START Fenster WANN? !-->
+                        <div class="form-inline input">
+                            <input class="form-control col" placeholder="Wann?" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+                        </div>
+                        <!-- END Fenster WANN? !-->
+                        <!-- START Button mit Plus: Auswahl der Filter bei Suche !-->
+                        <!--
                         <button type="button" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="collapse" data-target="#plusInformation" aria-expanded="false" aria-controls="plusInformation">+</button>-->
-                     <!-- END Button mit Plus: Auswahl der Filter bei Suche !-->
-                     <button type="button" onclick="AddFilters()" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="popover" data-placement="bottom" data-content='<form id="extraInformation" name="Extra filters" method="post" action="">
-                        <input type="checkbox" id="filter1" value="value1" name="filter1">
-                        <label for="filter1"> Filter 1</label> <br>
-                        <input type="checkbox" id="filter2" value="value2" name="filter2">
-                        <label for="filter2"> Filter 2</label> <br>
-                        <button type="submit" class="btn btn-primary" >submit</button>
+                        <!-- END Button mit Plus: Auswahl der Filter bei Suche !-->
+                        <button type="button" onclick="AddFilters()" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="popover" data-placement="bottom" data-content='<form id="extraInformation" name="Extra filters" method="post" action="">
+
+
+
+                        <div class="form-group">
+                         <!-- add area-->
+                               <input type="checkbox" id="filter1" value="value1" name="filter1">
+                               <label for="filter1"> Umkreis </label> <br>
+                               <!--select class="form-control col text-muted"-->
+                               <select class="form-control col text-muted" id="area">
+                                  <option value="" disabled selected>0 KM</option>
+                                  <option>5 KM</option>
+                                  <option>10 KM</option>
+                                  <option>15 KM</option>
+                                  <option>20 KM</option>
+                               </select>
+                               <br>
+                                <!-- add wind strength with min and max-->
+                                <div class="form-inline">
+                                   <input type="checkbox"  id="filter2" value="value2" name="filter2">
+                                   <label for="filter2"> Windstärke:  </label>
+                                   <label for ="minWind">Min. </label>
+                                   <input type="text" class="form-control col-2 " id="wind">
+                                   <label for ="maxWind">Max. </label>
+                                   <input type="text" class="form-control col-2 " id="wind1">
+                                   <br>
+                                </div>
+                                <button type="submit" class="btn btn-primary " >submit</button>
+                            </div>
+
                         </form>'>
-                     +
-                     </button>
-                     <!--START Button "Los" !-->
-                     <button type="submit" class="btn btn-primary" id="submit_button">Los</button>
-                     <!--END Button "Los" !-->
-                  </form>
-               </div>
+                            +
+                        </button>
+                        <!--START Button "Los" !-->
+                        <button type="submit" class="btn btn-primary" id="submit_button">Los</button>
+                        <!--END Button "Los" !-->
+                    </form>
+                </div>
             </div>
             <!--END Main form ROW 1-->
             <!--START Main form ROW 2-->
             <div class="rowForm">
-               <div class="row justify-content-center">
-                  <!--START Button mit Plus: Anzeige der Filter in einer Liste !-->
-                  <div class="collapse" id="plusInformation">
-                     <div class="card card-body">
-                        <div>
-                           <form>
-                              <!-- Pro Fieldset kann es mehrere Filter geben (dann muss die value angepasst werden: value1, value 2, etc.. Achtung: name bleibt innerhalb des Fieldsets gleich!) !-->
-                              <fieldset id="filter1">
-                                 <input type="checkbox" id="filter1_1" value="value1" name="filter1_1">
-                                 <label for="filter1_1"> Filter 1</label>
-                                 <!--<input type="checkbox" id="filter1_1" value="value2" name="filter1_1"> !-->
-                              </fieldset>
-                           </form>
+                <div class="row justify-content-center">
+                    <!--START Button mit Plus: Anzeige der Filter in einer Liste !-->
+                    <div class="collapse" id="plusInformation">
+                        <div class="card card-body">
+                            <div>
+                                <form>
+                                    <!-- Pro Fieldset kann es mehrere Filter geben (dann muss die value angepasst werden: value1, value 2, etc.. Achtung: name bleibt innerhalb des Fieldsets gleich!) !-->
+                                    <fieldset id="filter1">
+                                        <input type="checkbox" id="filter1_1" value="value1" name="filter1_1">
+                                        <label for="filter1_1"> Filter 1</label>
+                                        <!--<input type="checkbox" id="filter1_1" value="value2" name="filter1_1"> !-->
+                                    </fieldset>
+                                </form>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <!-- END Button mit Plus: Anzeige der Filter in einer Liste !-->
-               </div>
+                    </div>
+                    <!-- END Button mit Plus: Anzeige der Filter in einer Liste !-->
+                </div>
             </div>
             <!--END Main form ROW 2-->
-         </div>
-         <!--END Main form-->
-      </div>
-      <!--END Div Container for the first part of the page-->
-      <!--START Div Container for the second part of the page (Wetter)-->
-      <div class="container">
-         <div class="container text-center">
-            <!--START ROW 1-->
-            <div class="row" id="localWeather">
-               <!--START col-sm-->
-               <!--END ROW -->
-            </div>
-         </div>
-      <!--END Div Container for the second part of the page (Wetter)-->
-      </div>
-      <!--div placeholder for other page content-->
-      <div>
-         <h1>Platzhalter Ergebnisansicht und Karte</h1>
-      </div>
-      <!--div placeholder for other page content-->
-      <div>
-         <h1>Platzhalter Footer</h1>
-      </div>
-      <!--JAVASCRIPT REFS !-->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="../js/main.js"></script>
-   </body>
+        </div>
+        <!--END Main form-->
+    </div>
+    <!--END Div Container for the first part of the page-->
+    <!--START Div Container for the second part of the page (Wetter)-->
+    <div class="container">
+       <div class="container text-center">
+          <!--START ROW 1-->
+          <div class="row" id="localWeather">
+             <!--START col-sm-->
+             <!--END ROW -->
+          </div>
+</div>
+    <!--END Div Container for the second part of the page (Wetter)-->
+    </div>
+    <!--div placeholder for other page content-->
+    <div>
+        <h1>Platzhalter Ergebnisansicht und Karte</h1>
+    </div>
+    <!--div placeholder for other page content-->
+    <div>
+        <h1>Platzhalter Footer</h1>
+    </div>
+    <!--JAVASCRIPT REFS !-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</body>
+
 </html>

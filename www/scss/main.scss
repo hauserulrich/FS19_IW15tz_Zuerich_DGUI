@@ -1,0 +1,68 @@
+$color_1: black;
+$color_2: white;
+$background_color_1: 'black';
+
+/* Place text in the middle of the image */
+body {
+	background-color: $background_color_1;
+	color: $color_1;
+}
+.container-fluid {
+	margin-top: 0em;
+}
+.fa {
+	padding: 10px;
+	font-size: 1em;
+	width: 2em;
+	height: 2em;
+	text-align: center;
+	margin: 5px 2px;
+}
+.fa-facebook {
+	background: #3b5998;
+	color: $color_2;
+}
+.fa-twitter {
+	background: #55acee;
+	color: $color_2;
+}
+.input {
+	margin-left: 1em;
+}
+#place {
+	border-radius: 1em;
+}
+#activity {
+	border-radius: 1em;
+}
+#date {
+	border-radius: 1em;
+}
+#submit_button {
+	border-radius: 1.5em;
+	margin-left: 1em;
+}
+#plusButton {
+	margin-left: 1em;
+}
+.rowForm {
+	padding: 1.5em;
+}
+.rowWeather {
+	margin-top: 20px;
+	padding: 1.5em;
+}
+.jumbotron {
+	background-image: url('island.jpg');
+	height: 50%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+.text-center {
+	color: $color_2;
+}
+.card {
+	color: $color_1;
+}
