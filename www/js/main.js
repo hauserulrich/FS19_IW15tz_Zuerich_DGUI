@@ -1,5 +1,6 @@
-var cities=["Bern", "Zurich", "Luzern", "Genf", "Chur"];
+var cities=["Berne","Lucerne", "Geneva","Chur","Lugano"];
 var chosenCity="";
+var loc;
 
 $("[data-toggle=popover]").popover({
     html: true, 
@@ -36,7 +37,6 @@ function getWeatherJSON(){
 		},
 		success: function (data) {
 			console.log(data);
-			var loc
 			//createCard();		
 			for (i in data.observations.location) {
 				  if (data.observations.location[i].distance==0){
@@ -45,15 +45,16 @@ function getWeatherJSON(){
 				}
 			createCard();
 
-			//let location = data.observations.location[0]
-			let city = loc.state;
-			$('.card-title:first').text(city);
+			
+			//let city = loc.state;
+			/*$('.card-title:first').text(city);
+
 			let temp = loc.observation[0].temperature;
 			$('.card-subtitle:first').text(temp + " C°");
 			let description = loc.observation[0].description;
 			let icon = loc.observation[0].iconLink;
 			$('.description:first').text(description);
-			$('.weathericon:first').attr('src', icon);
+			$('.weathericon:first').attr('src', icon);*/
 		}
 	});
 };
@@ -74,20 +75,23 @@ function createCard(){
 
 	var cardtitle=document.createElement("h4");
 	divcardbody.appendChild(cardtitle);
-	cardtitle.className="card-title"
-	cardtitle.innerHTML="title";
+	cardtitle.className="card-title";
+	//cardtitle.innerHTML="title";
+	cardtitle.innerHTML=loc.state;
 
 	var cardsubtitle=document.createElement("h4");
 	divcardbody.appendChild(cardsubtitle);
 	cardsubtitle.className="card-subtitle mb-2 text-muted";
-	cardsubtitle.innerHTML="subtitle";
+	//cardsubtitle.innerHTML="subtitle";
+	cardsubtitle.innerHTML=loc.observation[0].temperature+" C°";
 
 	var cardicon=document.createElement("img");
 	divcardbody.appendChild(cardicon);
 	cardicon.className="weathericon";
-	cardicon.src="...";
+	cardicon.src=loc.observation[0].iconLink;
 
 	var carddescription=document.createElement("a");
 	divcardbody.appendChild(carddescription);
 	carddescription.className="description";
+	carddescription.innerHTML=loc.observation[0].description;
 };
