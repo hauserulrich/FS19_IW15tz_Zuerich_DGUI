@@ -59,11 +59,39 @@
                         <button type="button" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="collapse" data-target="#plusInformation" aria-expanded="false" aria-controls="plusInformation">+</button>-->
                         <!-- END Button mit Plus: Auswahl der Filter bei Suche !-->
                         <button type="button" onclick="AddFilters()" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="popover" data-placement="bottom" data-content='<form id="extraInformation" name="Extra filters" method="post" action="">
-                        <input type="checkbox" id="filter1" value="value1" name="filter1">
-                        <label for="filter1"> Filter 1</label> <br>
-                        <input type="checkbox" id="filter2" value="value2" name="filter2">
-                        <label for="filter2"> Filter 2</label> <br>
+
+                        <input type="checkbox" id="filterCity1" value="value1" name="filter1">
+                        <label for="filterCity1"> Filter 1</label> <br>
+                        <input type="checkbox" id="filterCity2" value="value2" name="filter2">
+                        <label for="filterCity2"> Filter 2</label> <br>
                         <button type="submit" class="btn btn-primary" >submit</button>
+
+                        <div class="form-group">
+                         <!-- add area-->
+                               <input type="checkbox" id="filter1" value="value1" name="filter1">
+                               <label for="filter1"> Umkreis </label> <br>
+                               <!--select class="form-control col text-muted"-->
+                               <select class="form-control col text-muted" id="area">
+                                  <option value="" disabled selected>0 KM</option>
+                                  <option>5 KM</option>
+                                  <option>10 KM</option>
+                                  <option>15 KM</option>
+                                  <option>20 KM</option>
+                               </select>
+                               <br>
+                                <!-- add wind strength with min and max-->
+                                <div class="form-inline">
+                                   <input type="checkbox"  id="filter2" value="value2" name="filter2">
+                                   <label for="filter2"> Windstärke:  </label>
+                                   <label for ="minWind">Min. </label>
+                                   <input type="text" class="form-control col-2 " id="wind">
+                                   <label for ="maxWind">Max. </label>
+                                   <input type="text" class="form-control col-2 " id="wind1">
+                                   <br>
+                                </div>
+                                <button type="submit" class="btn btn-primary " >submit</button>
+                            </div>
+
                         </form>'>
                             +
                         </button>
@@ -96,35 +124,35 @@
                 </div>
             </div>
             <!--END Main form ROW 2-->
-         </div>
-         <!--END Main form-->
-      </div>
-      <!--END Div Container for the first part of the page-->
-      <!--START Div Container for the second part of the page (Wetter)-->
-      <div class="container">
-         <div class="container text-center">
+        </div>
+        <!--END Main form-->
+    </div>
+    <!--END Div Container for the first part of the page-->
+    <!--START Div Container for the second part of the page (Wetter)-->
+    <div class="containerWeather">
+        <div class="container text-center">
             <!--START ROW 1-->
-            <div class="row" id="localWeather">
-               <!--START col-sm-->
-               <!--END ROW -->
+            <div class="rowWeather">
+                <div class="row justify-content-center">
+                </div>
             </div>
-         </div>
-      <!--END Div Container for the second part of the page (Wetter)-->
-      </div>
-      <!--div placeholder for other page content-->
-      <div>
-         <h1>Platzhalter Ergebnisansicht und Karte</h1>
-      </div>
-      <!--div placeholder for other page content-->
-      <div>
-         <h1>Platzhalter Footer</h1>
-      </div>
-      <!--JAVASCRIPT REFS !-->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="../js/main.js"></script>
-   </body>
-</html>
+        </div>
+    </div>
+    <!--END Div Container for the second part of the page (Wetter)-->
+    </div>
+    <!--div placeholder for other page content-->
+    <div>
+        <h1>Platzhalter Ergebnisansicht und Karte</h1>
+    </div>
+    <!--div placeholder for other page content-->
+    <div>
+        <h1>Platzhalter Footer</h1>
+    </div>
+    <!--JAVASCRIPT REFS !-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</body>
 
+</html>

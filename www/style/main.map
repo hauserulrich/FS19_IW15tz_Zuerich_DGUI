@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sources": [
+		"../scss/main.scss"
+	],
+	"sourcesContent": [
+		"$color_1: black;\r\n$color_2: white;\r\n$background_color_1: 'black';\r\n\r\n/* Place text in the middle of the image */\r\nbody {\r\n\tbackground-color: $background_color_1;\r\n\tcolor: $color_1;\r\n}\r\n.container-fluid {\r\n\tmargin-top: 0em;\r\n}\r\n.fa {\r\n\tpadding: 10px;\r\n\tfont-size: 1em;\r\n\twidth: 2em;\r\n\theight: 2em;\r\n\ttext-align: center;\r\n\tmargin: 5px 2px;\r\n}\r\n.fa-facebook {\r\n\tbackground: #3b5998;\r\n\tcolor: $color_2;\r\n}\r\n.fa-twitter {\r\n\tbackground: #55acee;\r\n\tcolor: $color_2;\r\n}\r\n.input {\r\n\tmargin-left: 1em;\r\n}\r\n#place {\r\n\tborder-radius: 1em;\r\n}\r\n#activity {\r\n\tborder-radius: 1em;\r\n}\r\n#date {\r\n\tborder-radius: 1em;\r\n}\r\n#submit_button {\r\n\tborder-radius: 1.5em;\r\n\tmargin-left: 1em;\r\n}\r\n#plusButton {\r\n\tmargin-left: 1em;\r\n}\r\n.rowForm {\r\n\tpadding: 1.5em;\r\n}\r\n.rowWeather {\r\n\tmargin-top: 20px;\r\n\tpadding: 1.5em;\r\n}\r\n.jumbotron {\r\n\tbackground-image: url('island.jpg');\r\n\theight: 50%;\r\n\tbackground-position: center;\r\n\tbackground-repeat: no-repeat;\r\n\tbackground-size: cover;\r\n\tposition: relative;\r\n}\r\n.text-center {\r\n\tcolor: $color_2;\r\n}\r\n.card {\r\n\tcolor: $color_1;\r\n}\r\n"
+	],
+	"names": [],
+	"mappings": "AAIA,2CAA2C;;AAC3C,AAAA,IAAI,CAAC;EACJ,gBAAgB,EAJI,OAAO;EAK3B,KAAK,EAPI,KAAK;CAQd;;;AACD,AAAA,gBAAgB,CAAC;EAChB,UAAU,EAAE,GAAG;CACf;;;AACD,AAAA,GAAG,CAAC;EACH,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,GAAG;EACd,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,OAAO;CACf;;;AACD,AAAA,YAAY,CAAC;EACZ,UAAU,EAAE,OAAO;EACnB,KAAK,EArBI,KAAK;CAsBd;;;AACD,AAAA,WAAW,CAAC;EACX,UAAU,EAAE,OAAO;EACnB,KAAK,EAzBI,KAAK;CA0Bd;;;AACD,AAAA,MAAM,CAAC;EACN,WAAW,EAAE,GAAG;CAChB;;;AACD,AAAA,MAAM,CAAC;EACN,aAAa,EAAE,GAAG;CAClB;;;AACD,AAAA,SAAS,CAAC;EACT,aAAa,EAAE,GAAG;CAClB;;;AACD,AAAA,KAAK,CAAC;EACL,aAAa,EAAE,GAAG;CAClB;;;AACD,AAAA,cAAc,CAAC;EACd,aAAa,EAAE,KAAK;EACpB,WAAW,EAAE,GAAG;CAChB;;;AACD,AAAA,WAAW,CAAC;EACX,WAAW,EAAE,GAAG;CAChB;;;AACD,AAAA,QAAQ,CAAC;EACR,OAAO,EAAE,KAAK;CACd;;;AACD,AAAA,WAAW,CAAC;EACX,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,KAAK;CACd;;;AACD,AAAA,UAAU,CAAC;EACV,gBAAgB,EAAE,iBAAiB;EACnC,MAAM,EAAE,GAAG;EACX,mBAAmB,EAAE,MAAM;EAC3B,iBAAiB,EAAE,SAAS;EAC5B,eAAe,EAAE,KAAK;EACtB,QAAQ,EAAE,QAAQ;CAClB;;;AACD,AAAA,YAAY,CAAC;EACZ,KAAK,EA9DI,KAAK;CA+Dd;;;AACD,AAAA,KAAK,CAAC;EACL,KAAK,EAlEI,KAAK;CAmEd"
+}
