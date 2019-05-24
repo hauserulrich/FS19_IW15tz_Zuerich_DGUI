@@ -84,13 +84,16 @@ function createCard(chosenCity){
 	else {
 		cardtitle.innerHTML=loc.state;
 	};*/
-	cardtitle.innerHTML=chosenCity;
+	cardtitle.innerHTML=chosenCity;//da in den Daten manchmal city und state verwechselt sind, z.B. fuer Chur, und weil wir den Ort Deutsch anzeigen moechten, wird hier der urspruenglich im Array citites angegebene Ort verwendet.
 
 
 	var cardsubtitle=document.createElement("h4");
 	divcardbody.appendChild(cardsubtitle);
 	cardsubtitle.className="card-subtitle mb-2 text-muted";
-	cardsubtitle.innerHTML=loc.observation[0].temperature+" C°";
+	let strtemperature = loc.observation[0].temperature;
+	let floattemperature=Math.round(parseFloat(strtemperature));//Temperatur wird in float umgewandelt und mathematisch gerundet
+	console.log(Math.round(strtemperature));
+	cardsubtitle.innerHTML=floattemperature+" C°";
 
 	var cardicon=document.createElement("img");
 	divcardbody.appendChild(cardicon);
