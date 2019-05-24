@@ -75,6 +75,11 @@ function createCard(chosenCity){
 	divcard.appendChild(divcardbody);
 	divcardbody.className="card-body";
 
+	var cityimg=document.createElement("img");
+	cityimg.src="../images/Bern.jpeg";
+	cityimg.height="100";
+	divcardbody.appendChild(cityimg);
+
 	var cardtitle=document.createElement("h4");
 	divcardbody.appendChild(cardtitle);
 	cardtitle.className="card-title";
@@ -85,7 +90,6 @@ function createCard(chosenCity){
 		cardtitle.innerHTML=loc.state;
 	};*/
 	cardtitle.innerHTML=chosenCity;//da in den Daten manchmal city und state verwechselt sind, z.B. fuer Chur, und weil wir den Ort Deutsch anzeigen moechten, wird hier der urspruenglich im Array citites angegebene Ort verwendet.
-
 
 	var cardsubtitle=document.createElement("h4");
 	divcardbody.appendChild(cardsubtitle);
