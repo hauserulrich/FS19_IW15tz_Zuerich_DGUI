@@ -72,7 +72,7 @@ function createCard(chosenCity){
     var divcard=document.createElement("div");
 	divcolsm.appendChild(divcard);
 	divcard.className="card";
-	divcard.style="height: 17rem;";
+	divcard.style="height: 20rem;";
 
 	var divcardbody=document.createElement("div");
 	divcard.appendChild(divcardbody);
@@ -87,7 +87,7 @@ function createCard(chosenCity){
 		  	cityimg.src="../images/Luzern.jpeg";
 		    break;
 		  case "Genf":
-		  	cityimg.src="";
+		  	cityimg.src="../images/Genf.jpeg";
 		  	break;
 		  case "Chur":
 		  	cityimg.src="../images/Chur.jpeg";
@@ -99,7 +99,8 @@ function createCard(chosenCity){
 		    cityimg.src="";
 		    cityimg.alt="kein Bild vorhanden";
 		};
-	cityimg.height="80";
+	cityimg.height="120";
+	cityimg.style="padding-bottom:1rem;";
 	divcardbody.appendChild(cityimg);
 	cityimg.className="card-img-top";
 
