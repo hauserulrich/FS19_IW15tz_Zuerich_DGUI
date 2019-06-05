@@ -62,6 +62,8 @@ function getWeatherJSON(chosenCity){
 };
 
 function createCard(chosenCity){
+
+/*<div class="card" style="width: 18rem;">*/
 	var x=document.getElementById("localWeather");
 	var divcolsm=document.createElement("div");
 	x.appendChild(divcolsm);
@@ -70,10 +72,37 @@ function createCard(chosenCity){
     var divcard=document.createElement("div");
 	divcolsm.appendChild(divcard);
 	divcard.className="card";
+	divcard.style="height: 20rem;";
 
 	var divcardbody=document.createElement("div");
 	divcard.appendChild(divcardbody);
 	divcardbody.className="card-body";
+
+	var cityimg=document.createElement("img");
+	switch(chosenCity) {
+		  case "Bern": 
+		  	cityimg.src="../images/Bern.jpeg";
+		    break;
+		  case "Luzern":
+		  	cityimg.src="../images/Luzern.jpeg";
+		    break;
+		  case "Genf":
+		  	cityimg.src="../images/Genf.jpeg";
+		  	break;
+		  case "Chur":
+		  	cityimg.src="../images/Chur.jpeg";
+		    break;
+		  case "Lugano":
+		 	cityimg.src="../images/Lugano.jpeg";
+		    break;
+		  default:
+		    cityimg.src="";
+		    cityimg.alt="kein Bild vorhanden";
+		};
+	cityimg.height="120";
+	cityimg.style="padding-bottom:1rem;";
+	divcardbody.appendChild(cityimg);
+	cityimg.className="card-img-top";
 
 	var cardtitle=document.createElement("h4");
 	divcardbody.appendChild(cardtitle);
@@ -85,7 +114,6 @@ function createCard(chosenCity){
 		cardtitle.innerHTML=loc.state;
 	};*/
 	cardtitle.innerHTML=chosenCity;//da in den Daten manchmal city und state verwechselt sind, z.B. fuer Chur, und weil wir den Ort Deutsch anzeigen moechten, wird hier der urspruenglich im Array citites angegebene Ort verwendet.
-
 
 	var cardsubtitle=document.createElement("h4");
 	divcardbody.appendChild(cardsubtitle);
