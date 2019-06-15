@@ -45,13 +45,15 @@ body
 #submit_button
 {
 	border-radius: 1.5em;
-	margin-left: 1em;
-	background: #FFB6C1;
-	border-color: #FFB6C1;
 }
 
 #plusButton{
-	margin-left: 1em;
+	width: 40px;
+	height: 40px;
+	border-radius: 15px;
+	font-size: 15px;
+	margin: 1em;
+
 }
 .containerHeader
 {
