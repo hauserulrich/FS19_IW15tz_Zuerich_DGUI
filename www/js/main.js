@@ -60,9 +60,6 @@ $(document).ready(function(){
 	// add a resize listener to make sure that the map occupies the whole container
 	window.addEventListener('resize', () => map.getViewPort().resize());
 
-
-	//createCard();
-	//getWeatherJSON();
 });
 
 
@@ -146,30 +143,7 @@ function handleSubmit(e){
 		}
 	}
 
-	
-	
-	//console.log('windMin: ', windInput.min)
-	//console.log('windMax: ', windInput.max)
-	//console.log('windInput: ', windInput)
-	//console.log('temeratureMin: ', temperatureInput.min)
-	//console.log('temeratureMax: ', temperatureInput.max)
-	//console.log('temperatureInput: ', temperatureInput)
-	//console.log('rainFallExcluded: ', rainFallExcluded)
-	//console.log('SnowFallExcluded: ', SnowFallExcluded)
 
-
-/*
-	console.log('place Input: ', userCityInputString);
-	console.log('date Input: ', userDateInputString);
-	console.log('newDate.value: ', new Date().toDateInputValue())
-	console.log('activity Input: ', userActivityInputString);
-	console.log('range Input: ', rangeInput);
-*/	
-	//console.log('place Input: ', userCityInputString);
-	
-
-	//getOverpassSpecifiedCity(userCityInputString, userRangeInput, userActivityInputString)
-	//getOverpassTransformedActivityList(userCityInputString, userRangeInput, userActivityInputString)
 	if((String(userDateInputString).includes(dateOfTodayString))){
 		getWeatherObservationJSON(userCityInputString);
 	}
@@ -223,8 +197,6 @@ function getWeatherJSONForCityLoop(chosenCity){
 			app_code: 'JW0IQrm5Unp63DYjintgxg'
 		},
 		success: function (data) {
-			//console.log(data);
-			//createCard();
 			for (i in data.observations.location) {
 				  if (data.observations.location[i].distance==0){
 				  loc=data.observations.location[i];
@@ -234,16 +206,6 @@ function getWeatherJSONForCityLoop(chosenCity){
 
 			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude}
 
-
-			//let city = loc.state;
-			/*$('.card-title:first').text(city);
-
-			let temp = loc.observation[0].temperature;
-			$('.card-subtitle:first').text(temp + " C°");
-			let description = loc.observation[0].description;
-			let icon = loc.observation[0].iconLink;
-			$('.description:first').text(description);
-			$('.weathericon:first').attr('src', icon);*/
 		},
 
 		error: function (err){
@@ -268,9 +230,6 @@ function getWeatherObservationJSON(chosenCity){
 			app_code: 'AWPhH77dKMHnL0twDz3p4w'
 		},
 		success: function (data) {
-			console.log('getWeatherObservationJSON')
-			console.log(data);
-			//createCard();
 			for (i in data.observations.location) {
 				  if (data.observations.location[i].distance==0){
 				  loc=data.observations.location[i];
@@ -281,15 +240,6 @@ function getWeatherObservationJSON(chosenCity){
 			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude}
 
 
-			//let city = loc.state;
-			/*$('.card-title:first').text(city);
-
-			let temp = loc.observation[0].temperature;
-			$('.card-subtitle:first').text(temp + " C°");
-			let description = loc.observation[0].description;
-			let icon = loc.observation[0].iconLink;
-			$('.description:first').text(description);
-			$('.weathericon:first').attr('src', icon);*/
 			map.setCenter(coordinatesForActivities);
 
 			let userActivityInputString = document.getElementById('userActivityInput').value;
@@ -332,11 +282,6 @@ function getWeather7DayForecastJSON(chosenCity){
 			app_code: 'AWPhH77dKMHnL0twDz3p4w'
 		},
 		success: function (data) {
-
-			//console.log('getWeather7DayForecastJSON:')
-			//console.log(data);
-			//createCard();
-
 			forecastForSelectedDate= undefined; //clear forecastForSelectedDate Variable
 			forecastList=[];
 
@@ -350,8 +295,7 @@ function getWeather7DayForecastJSON(chosenCity){
 				forecastList.push(dailyForecast);
 				//console.log(dailyForecast)
 			});
-			//console.log('loc: ',loc)
-			//createCard(chosenCity);
+
 			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude};
 
 			
@@ -507,11 +451,8 @@ function getOverpassTransformedActivityList(coordinates, rangeInput, activityInp
 					break;
 			}
 			
-			//console.log('chosenCityCoordinates: ', chosenCityCoordinates)
+			
 			activityList = transformedActivityList;
-
-			//console.log('transformedActivityList: ', activityList)
-
 			map.setCenter(chosenCityCoordinates);
 
 			setTimeout(() => {
@@ -526,9 +467,6 @@ function getOverpassTransformedActivityList(coordinates, rangeInput, activityInp
 
 
 function getOverpassInterestingNodesAround(coordinates, range){ 
-	//console.log('ReachedAroundFunction!');
-
-	//getInString = ''+ String(cityCoordinates.lat) +','+ String(cityCoordinates.lng) + ';r=' + String(searchRadius);
 
 	let nodeAroundString = 'node(around:'+ String(range) + ','+ String(coordinates.lat) + ','+ String(coordinates.lng) + ')';
 	let waysAroundString = 'way(around:'+ String(range) + ','+ String(coordinates.lat) + ','+ String(coordinates.lng) + ')';
@@ -546,7 +484,6 @@ function getOverpassInterestingNodesAround(coordinates, range){
 		queryString= 'http://overpass.osm.ch/api/interpreter?data=[out:json][timeout:20];';
 
 		$.each(activityList, (i, activity)=>{
-			//console.log('activity: ', activity)
 			nodeActivityChainString =  nodeAroundString+ '["natural"="water"]["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + defaultOutputFormatString;
 			waysActivityChainString =  waysAroundString+ '["natural"="water"]["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
 			relActivityChainString =  relAroundString+ '["natural"="water"]["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
@@ -561,7 +498,6 @@ function getOverpassInterestingNodesAround(coordinates, range){
 		queryString= 'http://overpass.osm.ch/api/interpreter?data=[out:json][timeout:20];';
 
 		$.each(activityList, (i, activity)=>{
-			//console.log('activity: ', activity)
 			nodeActivityChainString =  nodeAroundString+ '["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + defaultOutputFormatString;
 			waysActivityChainString =  waysAroundString+ '["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
 			relActivityChainString =  relAroundString+ '["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
@@ -572,7 +508,7 @@ function getOverpassInterestingNodesAround(coordinates, range){
 	}
 
 	
-	//console.log('queryString: ', queryString)
+
 
 
 	$.ajax({
@@ -581,8 +517,6 @@ function getOverpassInterestingNodesAround(coordinates, range){
 		dataType: 'json',
 
 		success: function (data) {
-			//console.log('interestingPlacesAround:')
-			//console.log(data);
 
 
 			interestingPlaceList = []
@@ -595,15 +529,8 @@ function getOverpassInterestingNodesAround(coordinates, range){
 				
 			});
 
-
-			//console.log('interestingPlaceList: ', interestingPlaceList)
-			//console.log('coordinates: ', coordinates)
 			$.each(interestingPlaceList, (i, place) =>{
 
-
-
-
-				//console.log('place: ', place)
 
 				if(place.type ==='node'){
 					if(Math.sign(Number(place.lat)) === -1){
@@ -634,13 +561,6 @@ function getOverpassInterestingNodesAround(coordinates, range){
     			return a.distance - b.distance;
 				});
 
-			
-
-			//console.log('interestingPlaceList: ', interestingPlaceList)
-
-			//console.log('TransformedInterestingPlaceList: ', interestingPlaceList)
-
-
 
 			//Display Results in ListView on Page
 			renderlist(interestingPlaceList);
@@ -669,14 +589,13 @@ function getOverpassInterestingNodesAround(coordinates, range){
 // and calls addInfoBubbleForOSM(interestingPlacesList)
 //includes call for checkIfFiltersNotViolated
 function checkConditionsForActivity(interestingPlaceList){
-				//************// Determine if the conditions for activity are stisfied
 	let recommendation = '';
 	let cardTitle = '';
 	let cardDescription = '';
 	let tempString = ''		
 	if(noForecast === false){
 		let filtersNotViolated = checkIfFiltersNotViolated()
-		//console.log('checkIfFiltersNotViolated(): ', checkIfFiltersNotViolated())
+		
 		if ((forecastForSelectedDate != undefined) && (forecastForSelectedDate.comfort != undefined) && (forecastForSelectedDate.comfort != '*')){
 			tempString= 'Die gefühlte Temperatur beträgt: ' + String(forecastForSelectedDate.comfort) + '°C'
 			
@@ -799,8 +718,6 @@ function checkConditionsForActivity(interestingPlaceList){
 // gets called by checkConditionsForActivity(interestingPlaceList)
 function checkIfFiltersNotViolated(){
 
-	//console.log('ReachedFilters')
-
 	let recommendation = '';
 	let cardTitle = '';
 	let cardDescription = '';
@@ -808,7 +725,6 @@ function checkIfFiltersNotViolated(){
 	let windString=''
 	filterConditionViolatedArray = [];
 
-	//console.log('forecastForSelectedDate.beaufortScale: ', forecastForSelectedDate.beaufortScale)
 	if ((forecastForSelectedDate != undefined) && (forecastForSelectedDate.comfort != undefined) && (forecastForSelectedDate.comfort != '*')){
 		tempString= 'Die gefühlte Temperatur beträgt: ' + String(forecastForSelectedDate.comfort) + '°C';
 	}
@@ -868,8 +784,6 @@ function checkIfFiltersNotViolated(){
 
 	if (filterConditionViolatedArray.length > 0){
 		$.each(filterConditionViolatedArray, (i, violationString)=>{
-
-			//console.log('violationString: ', violationString)
 
 			switch (violationString) {
 				case "temperatureViolation":
@@ -1051,12 +965,7 @@ function createCard(chosenCity){
 	var cardtitle=document.createElement("h4");
 	divcardbody.appendChild(cardtitle);
 	cardtitle.className="card-title";
-	/*if (loc.city==chosenCity){ //da in den Daten manchmal city und state verwechselt ist, z.B. für Chur, wird hier zuerst geschaut, ob die Daten richtig sind. Ggf. wird statt City State angezeigt.
-		cardtitle.innerHTML=loc.city;
-		}
-	else {
-		cardtitle.innerHTML=loc.state;
-	};*/
+
 	cardtitle.innerHTML=chosenCity;//da in den Daten manchmal city und state verwechselt sind, z.B. fuer Chur, und weil wir den Ort Deutsch anzeigen moechten, wird hier der urspruenglich im Array citites angegebene Ort verwendet.
 
 	var cardsubtitle=document.createElement("h4");
@@ -1064,7 +973,6 @@ function createCard(chosenCity){
 	cardsubtitle.className="card-subtitle mb-2 text-muted";
 	let strtemperature = loc.observation[0].temperature;
 	let floattemperature=Math.round(parseFloat(strtemperature));//Temperatur wird in float umgewandelt und mathematisch gerundet
-	//console.log(Math.round(strtemperature));
 	cardsubtitle.innerHTML=floattemperature+" C°";
 
 	var cardicon=document.createElement("img");
@@ -1111,9 +1019,6 @@ function getMap(centerCoordinates){
 //Creates html for Marker, which is displayed in the bubble
 function generateMarkers(placesList){
  	$.each(placesList, (i, palce) =>{
- 		//console.log('palce: ', palce)
- 		//console.log('palceType: ', palce.type)
-
 
  		let palceName = palce.tags.name;
  		let palceCategory = 'category';
@@ -1160,8 +1065,7 @@ function generateMarkers(placesList){
  						 '</br>' + '<span> Category: '  + String(palceCategory) + '</span>';
 
  		coordinatesForMarker = {lat: palceLat, lng: palceLon}
- 		//console.log('palce: ', palce)
-			//let coordinates = {lat: item.position[0], lng: item.position[1]}
+
 		addMarkerToGroup(markerGroup, coordinatesForMarker, htmlForMarker);
 
 	});
