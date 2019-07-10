@@ -59,34 +59,51 @@
                         <!--
                         <button type="button" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="collapse" data-target="#plusInformation" aria-expanded="false" aria-controls="plusInformation">+</button>-->
                         <!-- END Button mit Plus: Auswahl der Filter bei Suche !-->
-                        <button type="button" onclick="AddFilters()" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="popover" data-placement="bottom" data-content='<form id="extraInformation" name="Extra filters" method="post" action="">
+              <button type="button" class="btn btn-secondary rounded-circle" id="plusButton" data-toggle="popover" data-placement="bottom" data-content='<form id="extraInformation" name="Extra filters" method="post" action="">
 
 
 
                         <div class="form-group">
                          <!-- add area-->
-                               <input type="checkbox" id="filter1" value="value1" name="filter1">
-                               <label for="filter1"> Umkreis </label> <br>
+                               
+                               <label> Umkreis </label> <br>
                                <!--select class="form-control col text-muted"-->
-                               <select class="form-control col text-muted" id="area">
-                                  <option value="" disabled selected>0 KM</option>
-                                  <option>5 KM</option>
-                                  <option>10 KM</option>
-                                  <option>15 KM</option>
-                                  <option>20 KM</option>
+                               <select class="form-control col text-muted" id="userRangeInput">
+                                    <option value="5000" selected>5 KM</option>
+                                    <option value="10000">10 KM</option>
+                                    <option value="15000">15 KM</option>
+                                    <option value="20000">20 KM</option>
+                                    <option value="25000">25 KM</option>
+                                    <option value="30000">30 KM</option>
                                </select>
                                <br>
                                 <!-- add wind strength with min and max-->
                                 <div class="form-inline">
-                                   <input type="checkbox"  id="filter2" value="value2" name="filter2">
-                                   <label for="filter2"> Windstärke:  </label>
-                                   <label for ="minWind">Min. </label>
-                                   <input type="text" class="form-control col-2 " id="wind">
-                                   <label for ="maxWind">Max. </label>
-                                   <input type="text" class="form-control col-2 " id="wind1">
+                                   <label> Windstärke:  </label></br>
+                                   <label for ="minWind"> Min. </label>
+                                   <input type="text" class="form-control col-2" value="0" id="minWind">
+                                   <label for ="maxWind"> Max. </label>
+                                   <input type="text" class="form-control col-2 " value="10" id="maxWind">
+                                   <br>
+                                <!-- add temperature with min and max-->   
+                                <div class="form-inline">
+                                   <label> Temperatur:  </label>
+                                   <label for ="minTemp"> Min. </label>
+                                   <input type="text" class="form-control col-2 my-1" value="-30" id="minTemp">
+                                   <label for ="maxTemp"> Max. </label>
+                                   <input type="text" class="form-control col-2 my-1" value="50" id="maxTemp">
                                    <br>
                                 </div>
-                                <button type="submit" class="btn btn-primary " >submit</button>
+                                <!-- add temperature with min and max-->   
+                                <div class="form-inline">
+                                    <label> Es darf nicht regnen </label>
+                                   <input class="ml-2 mt-1"type="checkbox" id="rainFallInput" value="notAllowed">
+                                </div>
+                                <div class="form-inline">
+                                    <label class="ml-2"> Es darf nicht schneien </label>
+                                   <input class="ml-2 mt-1"type="checkbox" id="snowFallInput" value="notAllowed">
+                                </div>
+                                
                             </div>
 
                         </form>'>
