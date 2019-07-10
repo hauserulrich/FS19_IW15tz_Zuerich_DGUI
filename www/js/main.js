@@ -6,7 +6,7 @@ var cities=["Bern","Luzern", "Genf","Chur","Lugano", "St.Gallen"];
 var chosenCity;
 var loc;
 var map = {};
-//var defaultLayers = {}
+var defaultLayers = {}
 var ui = {}
 var populatedPlacesList = []
 var forecastList = []
