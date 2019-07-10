@@ -1169,6 +1169,47 @@ function generateMarkers(placesList){
 
 
 
+//Creates a new marker and adds it to a group
+//group =  The group holding the new marker
+//coordinates = The location of the marker
+//html = Data associated with the marker
+function addMarkerToGroup(group, coordinate, html) {
+	switch(activityList[0].activityId){
+		case 'swimming':
+			iconSource = new H.map.Icon('../images/water.png');
+		break;
+
+		case 'jogging':
+			iconSource = new H.map.Icon('../images/forest.png');
+		break;
+
+		case 'hiking':
+			iconSource = new H.map.Icon('../images/mountains.png');
+		break;
+
+		case 'surfing':
+			iconSource = new H.map.Icon('../images/water.png');
+		break;
+
+
+/*		case 'foodAndDrink':
+			iconSource = new H.map.Icon('../images/restaurant.png');
+		break;
+*/
+
+		default:
+
+		break
+
+	}
+	
+  	let marker = new H.map.Marker(coordinate, {icon: iconSource});
+  	// add custom data to the marker
+  	marker.setData(html);
+  	group.addObject(marker);
+}
+
+
 
 
 // create recommendation Card 
