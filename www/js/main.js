@@ -22,6 +22,7 @@ var rainFallExcluded = false
 var SnowFallExcluded = false
 var markerGroup = null;
 var filterConditionViolatedArray= []
+var dateOfTodayString = ''
 
 
 
@@ -32,6 +33,12 @@ var filterConditionViolatedArray= []
 $(document).ready(function(){
 	cityLoop();
 
+
+	let testForm = document.getElementById('userFormular');
+	dateOfTodayString = String(new Date().toDateInputValue())
+
+	testForm.addEventListener("submit", handleSubmit);
+    $('#date').val(new Date().toDateInputValue());
 
 	
 	$("[data-toggle=popover]").popover({
@@ -87,9 +94,10 @@ function handleSubmit(e){
 	
 	
 	windInput = {min: 0, max: 10};
-	temperatureInput = {min: -30, max: 50}
-	rainFallExcluded = false
-	SnowFallExcluded = false
+	temperatureInput = {min: -30, max: 50};
+	rainFallExcluded = false;
+	SnowFallExcluded = false;
+	noForecast=true;
 	 
 
 	let userCityInputString = document.getElementById('userCityInput').value;
@@ -156,7 +164,7 @@ function handleSubmit(e){
 
 	//getOverpassSpecifiedCity(userCityInputString, userRangeInput, userActivityInputString)
 	//getOverpassTransformedActivityList(userCityInputString, userRangeInput, userActivityInputString)
-	if(userDateInput === new Date().toDateInputValue()){
+	if((String(userDateInputString).includes(dateOfTodayString)){
 		getWeatherObservationJSON(userCityInputString);
 	}
 
@@ -278,11 +286,11 @@ function getWeatherObservationJSON(chosenCity){
 			$('.weathericon:first').attr('src', icon);*/
 			map.setCenter(coordinatesForActivities);
 
-/*			let userActivityInputString = document.getElementById('activity').value;
+			let userActivityInputString = document.getElementById('userActivityInput').value;
 			if(rangeInput != '5000'){
 				rangeInput = document.getElementById('userRangeInput').value;
 			}
-*/			
+			
 
 
 
@@ -352,7 +360,7 @@ function getWeather7DayForecastJSON(chosenCity){
 			}
 			
 			let userDateInput = document.getElementById('userDateInput').value;
-			noForecast=true;
+			
 			//console.log('date: ', userDateInput)
 
 			$.each(forecastList, (i, forecast)=>{
@@ -515,7 +523,141 @@ function getOverpassTransformedActivityList(coordinates, rangeInput, activityInp
 
 
 
+function getOverpassInterestingNodesAround(coordinates, range){ 
+	//console.log('ReachedAroundFunction!');
 
+	//getInString = ''+ String(cityCoordinates.lat) +','+ String(cityCoordinates.lng) + ';r=' + String(searchRadius);
+
+	let nodeAroundString = 'node(around:'+ String(range) + ','+ String(coordinates.lat) + ','+ String(coordinates.lng) + ')';
+	let waysAroundString = 'way(around:'+ String(range) + ','+ String(coordinates.lat) + ','+ String(coordinates.lng) + ')';
+	let relAroundString = 'rel(around:'+ String(range) + ','+ String(coordinates.lat) + ','+ String(coordinates.lng) + ')';
+
+	let defaultOutputFormatString = 'out;';
+	let outputCenterFormatString = 'out center;';
+
+	let	queryString= '';
+	
+	
+
+	if (activityList[0].categoryID === 'water'){
+
+		queryString= 'http://overpass.osm.ch/api/interpreter?data=[out:json][timeout:20];';
+
+		$.each(activityList, (i, activity)=>{
+			//console.log('activity: ', activity)
+			nodeActivityChainString =  nodeAroundString+ '["natural"="water"]["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + defaultOutputFormatString;
+			waysActivityChainString =  waysAroundString+ '["natural"="water"]["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
+			relActivityChainString =  relAroundString+ '["natural"="water"]["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
+
+			queryString = queryString + nodeActivityChainString + waysActivityChainString + relActivityChainString;
+		})
+
+	}
+	
+	else{
+
+		queryString= 'http://overpass.osm.ch/api/interpreter?data=[out:json][timeout:20];';
+
+		$.each(activityList, (i, activity)=>{
+			//console.log('activity: ', activity)
+			nodeActivityChainString =  nodeAroundString+ '["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + defaultOutputFormatString;
+			waysActivityChainString =  waysAroundString+ '["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
+			relActivityChainString =  relAroundString+ '["' + activity.categoryID + '"="'+ activity.categoryName+'"];' + outputCenterFormatString;
+		
+			queryString = queryString + nodeActivityChainString + waysActivityChainString +	relActivityChainString;
+		})	
+
+	}
+
+	
+	//console.log('queryString: ', queryString)
+
+
+	$.ajax({
+		url: queryString,
+		type: 'GET',
+		dataType: 'json',
+
+		success: function (data) {
+			//console.log('interestingPlacesAround:')
+			//console.log(data);
+
+
+			interestingPlaceList = []
+
+			$.each(data.elements, function(i, element){
+					if(element.tags.name != undefined){
+						interestingPlaceList.push(element)
+					}
+					
+				
+			});
+
+
+			//console.log('interestingPlaceList: ', interestingPlaceList)
+			//console.log('coordinates: ', coordinates)
+			$.each(interestingPlaceList, (i, place) =>{
+
+
+
+
+				//console.log('place: ', place)
+
+				if(place.type ==='node'){
+					if(Math.sign(Number(place.lat)) === -1){
+ 						place.lat = place.lat * -1;
+ 						}
+
+ 					if(Math.sign(Number(place.lon)) === -1){
+ 					place.lon = place.lon * -1;
+ 					}
+					place['distance'] = getDistance(coordinates.lat, coordinates.lng, place.lat, place.lon, 'M')
+				}
+				else{
+
+					if(Math.sign(Number(place.center.lat)) === -1){
+ 						place.center.lat = place.center.lat * -1;
+ 						}
+
+ 					if(Math.sign(Number(place.center.lon)) === -1){
+ 					place.center.lon = place.center.lon * -1;
+ 					}
+					
+					place['distance'] = getDistance(coordinates.lat, coordinates.lng, place.center.lat, place.center.lon, 'M')
+				}
+				
+			})
+
+			interestingPlaceList.sort(function(a, b) {
+    			return a.distance - b.distance;
+				});
+
+			
+
+			//console.log('interestingPlaceList: ', interestingPlaceList)
+
+			//console.log('TransformedInterestingPlaceList: ', interestingPlaceList)
+
+
+
+			//console.log('interestingPlaceList: ', interestingPlaceList)
+			renderlist(interestingPlaceList);
+	
+			checkConditionsForActivity(interestingPlaceList)
+
+			
+
+
+		},
+
+		error: function (errorThrown){
+			window.alert(errorThrown)
+		}
+
+	});
+
+
+};
 
 
 
