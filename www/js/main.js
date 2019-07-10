@@ -1,20 +1,56 @@
+//************ Variables ***************
+
+
 var cities=["Bern","Luzern", "Genf","Chur","Lugano", "St.Gallen"];
 //var cities=["Chur", "Luzern"];
 var chosenCity;
 var loc;
 
-$("[data-toggle=popover]").popover({
+
+
+
+
+
+
+
+
+
+
+
+//************* Init *********************
+
+
+$(document).ready(function(){
+	cityLoop();
+
+
+	
+	$("[data-toggle=popover]").popover({
     html: true,
 	content: function() {
           return $('#popover-content').html();
         }
-});
+	});
 
-$(document).ready(function(){
-	cityLoop();
+
+	//set currentCenterCoordinates to Zürich
+	currentCenterCoordinates = { lat: 47.3769 , lng: 8.5417 }; 
+
+	//create map with ui and centerCoordinates and fill it into container 
+	getMap(currentCenterCoordinates);
+	
+	// MapEvents enables the event system
+	// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+	var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+	// add a resize listener to make sure that the map occupies the whole container
+	window.addEventListener('resize', () => map.getViewPort().resize());
+
+
 	//createCard();
 	//getWeatherJSON();
 });
+
 
 function cityLoop(){
 	for (i in cities){
@@ -22,6 +58,19 @@ function cityLoop(){
 		getWeatherJSON(chosenCity);
 	}
 };
+
+
+
+
+
+
+
+
+//********** dealing with userInput of form element **************
+
+
+
+
 
 function getWeatherJSONForCityLoop(chosenCity){
 	//console.log(chosenCity);
@@ -207,6 +256,22 @@ function getWeather7DayForecastJSON(chosenCity){
 	});
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ************ Rendering *******************
+
 function createCard(chosenCity){
 
 /*<div class="card" style="width: 18rem;">*/
@@ -281,4 +346,31 @@ function createCard(chosenCity){
 	divcardbody.appendChild(carddescription);
 	carddescription.className="description";
 	carddescription.innerHTML=loc.observation[0].description;
+};
+
+
+function getMap(centerCoordinates){
+    // Initialize the platform object:
+    platform = new H.service.Platform({
+        'app_id': '7BkdLe9FTsphGjGexs6b',
+        'app_code': 'AWPhH77dKMHnL0twDz3p4w'
+    });
+
+    // Obtain the default map types from the platform object
+    defaultLayers = platform.createDefaultLayers();
+
+    // Instantiate (and display) a map object:
+    map = new H.Map(
+        document.getElementById('mapContainer'),
+        defaultLayers.normal.map, {
+            zoom: 10,
+            center: centerCoordinates
+        });
+
+
+  	// Create the default UI:
+  	ui = H.ui.UI.createDefault(map, defaultLayers, 'de-DE');
+
+
+
 };
