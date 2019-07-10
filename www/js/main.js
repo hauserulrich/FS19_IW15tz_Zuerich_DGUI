@@ -67,6 +67,72 @@ function getWeatherJSONForCityLoop(chosenCity){
 	});
 };
 
+//Get Weather-Observation for today
+function getWeatherObservationJSON(chosenCity){
+	//console.log(chosenCity);
+	$.ajax({
+		url: 'https://weather.api.here.com/weather/1.0/report.json',
+		type: 'GET',
+		dataType: 'jsonp',
+		jsonp: 'jsonpcallback',
+		data: {
+			product: 'observation',
+			name: chosenCity,
+			//name: 'Luzern',
+			app_id: '7BkdLe9FTsphGjGexs6b',
+			app_code: 'AWPhH77dKMHnL0twDz3p4w'
+		},
+		success: function (data) {
+			console.log('getWeatherObservationJSON')
+			console.log(data);
+			//createCard();
+			for (i in data.observations.location) {
+				  if (data.observations.location[i].distance==0){
+				  loc=data.observations.location[i];
+				  }
+				};
+			createCard(chosenCity);
+
+			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude}
+
+
+			//let city = loc.state;
+			/*$('.card-title:first').text(city);
+
+			let temp = loc.observation[0].temperature;
+			$('.card-subtitle:first').text(temp + " C°");
+			let description = loc.observation[0].description;
+			let icon = loc.observation[0].iconLink;
+			$('.description:first').text(description);
+			$('.weathericon:first').attr('src', icon);*/
+			map.setCenter(coordinatesForActivities);
+
+/*			let userActivityInputString = document.getElementById('activity').value;
+			if(rangeInput != '5000'){
+				rangeInput = document.getElementById('userRangeInput').value;
+			}
+*/			
+
+
+
+			//console.log('rangeValue: ', userRangeInput)
+			noForecast = false;
+			forecastForSelectedDate = data.observations.location[0].observation[0];
+			//console.log('forecastForSelectedDate: ', forecastForSelectedDate);
+
+			setTimeout(() => {
+			 getOverpassTransformedActivityList(coordinatesForActivities, rangeInput, userActivityInputString);
+			}, 30)
+			
+
+		},
+
+		error: function (err){
+			window.alert(err)
+		}
+	});
+};
+
 function createCard(chosenCity){
 
 /*<div class="card" style="width: 18rem;">*/
