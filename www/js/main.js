@@ -966,7 +966,7 @@ function checkIfFiltersNotViolated(){
 }
 
 
-//Creates a markerGroup if necessary and adds an eventListener to it on "tap" event which creates the bubble on the map  
+//Creates a markerGroup if necessary and adds an eventListener to it on "tap" event, which creates the bubble on the map  
 //Calls generateMarkers(placesList) to create the individual markers
 function addInfoBubbleForOSM(placesList) {
 
@@ -1104,6 +1104,72 @@ function getMap(centerCoordinates){
 
 
 };
+
+
+
+//Generates Markers depending on the coordinates of the placeObjects in the placesList and
+//Creates html for Marker, which is displayed in the bubble
+function generateMarkers(placesList){
+ 	$.each(placesList, (i, palce) =>{
+ 		//console.log('palce: ', palce)
+ 		//console.log('palceType: ', palce.type)
+
+
+ 		let palceName = palce.tags.name;
+ 		let palceCategory = 'category';
+ 		let comfortString = ''
+
+ 		if(palce.tags.natural != undefined){
+ 			if(palce.tags.natural === 'water'){
+ 				palceCategory = palce.tags.water;
+ 			}
+ 			else{
+ 				palceCategory = palce.tags.natural;
+ 			}
+ 			
+ 		}
+
+ 		if(palce.tags.landuse != undefined){
+ 			palceCategory = palce.tags.landuse;
+ 		}
+
+ 		if(palce.tags.amenity != undefined){
+ 			palceCategory = palce.tags.amenity;
+ 		}
+
+ 		if ((forecastForSelectedDate != undefined) && (forecastForSelectedDate.comfort != undefined) && (forecastForSelectedDate.comfort != '*')){
+ 			comfortString = ' </br><span> Temperature: ' + String(forecastForSelectedDate.comfort)+' °C</span>'
+ 		}
+ 		
+ 		
+ 		let palceLat = 0;
+ 		let palceLon = 0;
+
+ 		if(palce.type === 'node'){
+ 			palceLat = palce.lat;
+ 			palceLon = palce.lon;
+ 		}
+ 		else{
+ 			palceLat = palce.center.lat;
+ 			palceLon = palce.center.lon;
+ 		}
+
+ 		htmlForMarker = '<strong>' + String(palceName) + '</strong>' +
+ 						 '<span> Distance: ' + String(palce.distance.toFixed(0))+ ' m</span>'+
+ 						 comfortString +
+ 						 '</br>' + '<span> Category: '  + String(palceCategory) + '</span>';
+
+ 		coordinatesForMarker = {lat: palceLat, lng: palceLon}
+ 		//console.log('palce: ', palce)
+			//let coordinates = {lat: item.position[0], lng: item.position[1]}
+		addMarkerToGroup(markerGroup, coordinatesForMarker, htmlForMarker);
+
+	});
+}
+
+
+
+
 
 // create recommendation Card 
 function get_recommendation_card(recommendation, cardtitel, description) {
