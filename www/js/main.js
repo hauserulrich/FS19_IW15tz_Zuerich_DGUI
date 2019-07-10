@@ -19,8 +19,9 @@ $(document).ready(function(){
 function cityLoop(){
 	for (i in cities){
 		chosenCity=cities[i];
-		getWeatherJSON(chosenCity);
+		getWeatherJSONForCityLoop(chosenCity);
 	}
+	loc={};
 };
 
 function getWeatherJSONForCityLoop(chosenCity){
