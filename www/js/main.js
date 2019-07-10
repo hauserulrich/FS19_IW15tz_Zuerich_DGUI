@@ -183,7 +183,6 @@ function getDistance(lat1, lon1, lat2, lon2, unit) {
 
 
 function getWeatherJSONForCityLoop(chosenCity){
-	//console.log(chosenCity);
 	$.ajax({
 		url: 'https://weather.api.here.com/weather/1.0/report.json',
 		type: 'GET',
@@ -192,7 +191,6 @@ function getWeatherJSONForCityLoop(chosenCity){
 		data: {
 			product: 'observation',
 			name: chosenCity,
-			//name: 'Luzern',
 			app_id: 'zvWSTyjcoSOSaHgDd47m',
 			app_code: 'JW0IQrm5Unp63DYjintgxg'
 		},
@@ -216,7 +214,6 @@ function getWeatherJSONForCityLoop(chosenCity){
 
 //Get Weather-Observation for today
 function getWeatherObservationJSON(chosenCity){
-	//console.log(chosenCity);
 	$.ajax({
 		url: 'https://weather.api.here.com/weather/1.0/report.json',
 		type: 'GET',
@@ -225,7 +222,7 @@ function getWeatherObservationJSON(chosenCity){
 		data: {
 			product: 'observation',
 			name: chosenCity,
-			//name: 'Luzern',
+
 			app_id: '7BkdLe9FTsphGjGexs6b',
 			app_code: 'AWPhH77dKMHnL0twDz3p4w'
 		},
@@ -248,10 +245,10 @@ function getWeatherObservationJSON(chosenCity){
 
 
 
-			//console.log('rangeValue: ', userRangeInput)
+
 			noForecast = false;
 			forecastForSelectedDate = data.observations.location[0].observation[0];
-			//console.log('forecastForSelectedDate: ', forecastForSelectedDate);
+
 
 			setTimeout(() => {
 			 getOverpassTransformedActivityList(coordinatesForActivities, rangeInput, userActivityInputString);
@@ -268,7 +265,6 @@ function getWeatherObservationJSON(chosenCity){
 
 //Get Weatherforecast for the next 7 days
 function getWeather7DayForecastJSON(chosenCity){
-	//console.log(chosenCity);
 	$.ajax({
 		url: 'https://weather.api.here.com/weather/1.0/report.json',
 		type: 'GET',
@@ -277,7 +273,6 @@ function getWeather7DayForecastJSON(chosenCity){
 		data: {
 			product: 'forecast_7days_simple',
 			name: chosenCity,
-			//name: 'Luzern',
 			app_id: '7BkdLe9FTsphGjGexs6b',
 			app_code: 'AWPhH77dKMHnL0twDz3p4w'
 		},
@@ -293,7 +288,6 @@ function getWeather7DayForecastJSON(chosenCity){
 
 			$.each(data.dailyForecasts.forecastLocation.forecast, (i, dailyForecast)=>{
 				forecastList.push(dailyForecast);
-				//console.log(dailyForecast)
 			});
 
 			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude};
@@ -307,7 +301,6 @@ function getWeather7DayForecastJSON(chosenCity){
 			
 			let userDateInput = document.getElementById('userDateInput').value;
 			
-			//console.log('date: ', userDateInput)
 
 			$.each(forecastList, (i, forecast)=>{
 				if(String(forecast.utcTime).includes(String(userDateInput))){
@@ -316,11 +309,6 @@ function getWeather7DayForecastJSON(chosenCity){
 				}
 			})
 
-			//console.log('forecastForSelectedDate: ', forecastForSelectedDate);
-			
-			//console.log('rangeValue: ', userRangeInput)
-
-			//getActivityLocationList(coordinatesForActivities, userRangeInput, userActivityInputString)
 			setTimeout(() => {
 			  getOverpassTransformedActivityList(coordinatesForActivities, rangeInput, userActivityInputString);
 			}, 30)
