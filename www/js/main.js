@@ -23,7 +23,7 @@ function cityLoop(){
 	}
 };
 
-function getWeatherJSON(chosenCity){
+function getWeatherJSONForCityLoop(chosenCity){
 	//console.log(chosenCity);
 	$.ajax({
 		url: 'https://weather.api.here.com/weather/1.0/report.json',
@@ -38,7 +38,7 @@ function getWeatherJSON(chosenCity){
 			app_code: 'JW0IQrm5Unp63DYjintgxg'
 		},
 		success: function (data) {
-			console.log(data);
+			//console.log(data);
 			//createCard();
 			for (i in data.observations.location) {
 				  if (data.observations.location[i].distance==0){
@@ -46,6 +46,8 @@ function getWeatherJSON(chosenCity){
 				  }
 				};
 			createCard(chosenCity);
+
+			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude}
 
 
 			//let city = loc.state;
@@ -57,6 +59,10 @@ function getWeatherJSON(chosenCity){
 			let icon = loc.observation[0].iconLink;
 			$('.description:first').text(description);
 			$('.weathericon:first').attr('src', icon);*/
+		},
+
+		error: function (err){
+			window.alert(err)
 		}
 	});
 };
