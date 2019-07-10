@@ -133,6 +133,80 @@ function getWeatherObservationJSON(chosenCity){
 	});
 };
 
+//Get Weatherforecast for the next 7 days
+function getWeather7DayForecastJSON(chosenCity){
+	//console.log(chosenCity);
+	$.ajax({
+		url: 'https://weather.api.here.com/weather/1.0/report.json',
+		type: 'GET',
+		dataType: 'jsonp',
+		jsonp: 'jsonpcallback',
+		data: {
+			product: 'forecast_7days_simple',
+			name: chosenCity,
+			//name: 'Luzern',
+			app_id: '7BkdLe9FTsphGjGexs6b',
+			app_code: 'AWPhH77dKMHnL0twDz3p4w'
+		},
+		success: function (data) {
+
+			//console.log('getWeather7DayForecastJSON:')
+			//console.log(data);
+			//createCard();
+
+			forecastForSelectedDate= undefined; //clear forecastForSelectedDate Variable
+			forecastList=[];
+
+			for (i in data.dailyForecasts.forecastLocation) {
+				  if (data.dailyForecasts.forecastLocation.distance==0){
+				  loc=data.dailyForecasts.forecastLocation;
+				  };
+				};
+
+			$.each(data.dailyForecasts.forecastLocation.forecast, (i, dailyForecast)=>{
+				forecastList.push(dailyForecast);
+				//console.log(dailyForecast)
+			});
+			//console.log('loc: ',loc)
+			//createCard(chosenCity);
+			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude};
+
+			
+			map.setCenter(coordinatesForActivities);
+
+			
+			let userActivityInputString = document.getElementById('userActivityInput').value;
+			if(rangeInput != '5000'){
+				rangeInput = document.getElementById('userRangeInput').value;
+			}
+			
+			let userDateInput = document.getElementById('userDateInput').value;
+			noForecast=true;
+			//console.log('date: ', userDateInput)
+
+			$.each(forecastList, (i, forecast)=>{
+				if(String(forecast.utcTime).includes(String(userDateInput))){
+					forecastForSelectedDate = forecast;
+					noForecast = false;
+				}
+			})
+
+			//console.log('forecastForSelectedDate: ', forecastForSelectedDate);
+			
+			//console.log('rangeValue: ', userRangeInput)
+
+			//getActivityLocationList(coordinatesForActivities, userRangeInput, userActivityInputString)
+			setTimeout(() => {
+			  getOverpassTransformedActivityList(coordinatesForActivities, rangeInput, userActivityInputString);
+			}, 30)
+			
+		},
+		error: function (err){
+			window.alert(err)
+		}
+	});
+};
+
 function createCard(chosenCity){
 
 /*<div class="card" style="width: 18rem;">*/
