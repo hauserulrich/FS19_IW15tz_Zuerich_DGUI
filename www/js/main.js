@@ -966,8 +966,35 @@ function checkIfFiltersNotViolated(){
 }
 
 
+//Creates a markerGroup if necessary and adds an eventListener to it on "tap" event which creates the bubble on the map  
+//Calls generateMarkers(placesList) to create the individual markers
+function addInfoBubbleForOSM(placesList) {
 
+	if (markerGroup != null){
+		map.removeObject(markerGroup);
+	}
+  
+ 	markerGroup = new H.map.Group();
+  	//console.log('markerGroup', markerGroup)
+  	
 
+  	map.addObject(markerGroup);
+
+ 	// add 'tap' event listener, that opens info bubble, to the group
+  	markerGroup.addEventListener('tap', function (evt) {
+    // event target is the marker itself, group is a parent event target
+    // for all objects that it contains
+    var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
+      	// read custom data
+    	content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+  }, false);
+
+  	generateMarkers(placesList)
+
+}
 
 
 
