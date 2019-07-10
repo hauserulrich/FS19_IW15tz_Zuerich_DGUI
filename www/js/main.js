@@ -640,9 +640,10 @@ function getOverpassInterestingNodesAround(coordinates, range){
 
 
 
-			//console.log('interestingPlaceList: ', interestingPlaceList)
+			//Display Results in ListView on Page
 			renderlist(interestingPlaceList);
-	
+			
+			//Check if the activity-conditions are satisfied and the filters fit
 			checkConditionsForActivity(interestingPlaceList)
 
 			
@@ -661,6 +662,134 @@ function getOverpassInterestingNodesAround(coordinates, range){
 
 
 
+// checks if conditions for activities are satisfied,
+// creates content for get_recommendation_card(recommendation, cardTitle, cardDescription)
+// and calls addInfoBubbleForOSM(interestingPlacesList)
+//includes call for checkIfFiltersNotViolated
+function checkConditionsForActivity(interestingPlaceList){
+				//************// Determine if the conditions for activity are stisfied
+	let recommendation = '';
+	let cardTitle = '';
+	let cardDescription = '';
+	let tempString = ''		
+	if(noForecast === false){
+		let filtersNotViolated = checkIfFiltersNotViolated()
+		//console.log('checkIfFiltersNotViolated(): ', checkIfFiltersNotViolated())
+		if ((forecastForSelectedDate != undefined) && (forecastForSelectedDate.comfort != undefined) && (forecastForSelectedDate.comfort != '*')){
+			tempString= 'Die gefühlte Temperatur beträgt: ' + String(forecastForSelectedDate.comfort) + '°C'
+			
+		}
+		if(filtersNotViolated){
+			switch (activityList[0].activityId) {
+				case 'swimming':
+					if(forecastForSelectedDate.comfort >= 20){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go swimming!';
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go swimming...";							
+					}
+					if(interestingPlaceList.length >0){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go swimming!';							
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go swimming...";
+												}
+					cardDescription = 	tempString +
+										'</br> die Windgeschwindigkeit liegt bei: '+ String(forecastForSelectedDate.beaufortScale) + ' beaufort'+
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+				break;
+			case 'jogging':
+				if(forecastForSelectedDate.comfort >= 10){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go jogging!';
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go jogging...";							
+					}
+					if(interestingPlaceList.length >0){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go jogging!';							
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go jogging...";
+												}
+					cardDescription = 	tempString +
+										'</br> die Windgeschwindigkeit liegt bei: '+ String(forecastForSelectedDate.beaufortScale) + ' beaufort' +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+				break;
+			case 'hiking':
+					
+					if(forecastForSelectedDate.comfort >= 15){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go hiking!';
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go hiking...";							
+					}
+					if(interestingPlaceList.length >0){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go hiking!';							
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go hiking...";
+												}
+					cardDescription = 	tempString +
+										'</br> die Windgeschwindigkeit liegt bei: '+ String(forecastForSelectedDate.beaufortScale) + ' beaufort' +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+				break;
+			case 'surfing':
+				
+				if(forecastForSelectedDate.beaufortScale >=2){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go surfing!';
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go surfing...";							
+					}
+					if(interestingPlaceList.length >0){
+						recommendation = 'yes';
+						cardTitle = 'Yes, you can go surfing!';							
+					}
+					else{
+						recommendation = 'no';
+						cardTitle = "No you can't go surfing...";
+												}
+					cardDescription = 	tempString +
+										'</br> die Windgeschwindigkeit liegt bei: '+ String(forecastForSelectedDate.beaufortScale) + ' beaufort' +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+				break;
+			case 'foodAndDrink':
+				break;
+			default:
+				// statements_def
+				console.log('activityInputString does not match!')
+				break;
+			}
+			get_recommendation_card(recommendation, cardTitle, cardDescription)
+			addInfoBubbleForOSM(interestingPlaceList)
+		}
+		
+	}
+	else{
+				
+		addInfoBubbleForOSM(interestingPlaceList)
+		recommendation = 'noData';
+		cardTitle = "We don't know yet...";
+		cardDescription = 	'The forecast for this day is not available yet. </br> '+
+							' (Forecast is usually available for today and the next 7 days) </br>' +
+							'But ' + String(interestingPlaceList.length) + ' places have been found.' ;
+		get_recommendation_card(recommendation, cardTitle, cardDescription)
+	}
+}
 
 
 
