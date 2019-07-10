@@ -473,3 +473,32 @@ function getMap(centerCoordinates){
 
 
 };
+
+// create recommendation Card 
+function get_recommendation_card(recommendation, cardtitel, description) {
+	$("#recommendationcard").empty(); // Clear all Content of the Recommendation Card
+	// Check the recommendation and alter the Image shown.
+	switch (recommendation) {
+	case "yes":
+			picturelink = "../images/Thumbs_UpSmall.png";
+			break;
+	case "no":
+			picturelink = "../images/Thumbs_downSmall.png";
+			break;
+	case "noData":
+			picturelink = "../images/Sorry_no_answerSmall.jpg";
+			break;
+	default:
+			break;
+		};
+	$('#recommendationcard').append('<div class="card flex-row flex-wrap my-3">'+
+										'<div class="card-header border-0">'+
+											'<img class="card-img-top"  src=' + picturelink +' alt="Recommendation">'+
+										'</div>'+
+										'<div class="card-block px-2">'+
+											'<h4 class="card-title">' + cardtitel +	'</h4>'+
+											'<p class="card-text">' + description +	'</p>'+
+										'</div>'+
+									'</div>');
+
+}
