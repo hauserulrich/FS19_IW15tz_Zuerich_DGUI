@@ -525,3 +525,28 @@ function get_recommendation_card(recommendation, cardtitel, description) {
 									'</div>');
 
 }
+
+function renderlist(resultlist){
+	$("#resultlist").empty(); // Clear all the Content inside the div "Resultlist"
+	//Create Button for Tabellenansicht
+	$('#resultlist').append('<br><button class="btn btn-primary my-3" type="button" '+
+							'data-toggle="collapse" data-target="#collapselist" '+
+							'aria-expanded="false" aria-controls="collapselist">'+
+							'Tabellenansicht</button> <div class="collapse" id="collapselist">');
+	// Create Header for the Resultlist
+	$('#collapselist').append('<div class="row result_row"  style="border: 2px solid darkgrey"> '+
+		'						<div class="col-sm-6 result_col_titel">' + 
+								'<h3>Title</h3>' + '</div><div class="col-sm-6 result_col_distance">' +
+								'<h3>Distanz</h3>' + '<div> </div>');
+	$.each(resultlist, function(i, standort){ // Create a Row for each datapoint from the Ajax Recall
+		//console.log(standort);
+		$('#collapselist').append('<div class="row result_row" style="border: 1px solid darkgrey"> '+
+								' <div class="col-sm-6 result_col_titel">' + standort.tags.name +
+								'</div><div class="col-sm-6 result_col_distance"> '+
+								'<p class="text-right text-sm-left text-md-left">' +
+								standort.distance.toFixed(0) + ' m </p><div> </div>');
+	});
+	// Create Enddiv for Collapsecontainer
+	$('#collapseliste').append('</div>');
+
+};
