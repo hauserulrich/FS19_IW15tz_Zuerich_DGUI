@@ -379,7 +379,138 @@ function getWeather7DayForecastJSON(chosenCity){
 };
 
 
+//Overpass Ajax Calls
 
+//Transform the userInput into the categories for the Overpass Ajax Call
+function getOverpassTransformedActivityList(coordinates, rangeInput, activityInputString){
+
+	chosenCityCoordinates = coordinates;
+	transformedActivityList = [];
+	activityList =[];
+			
+
+			switch (activityInputString) {
+				case 'swimming':
+					transformedActivityList = [
+
+									{	activityId:'swimming',
+										categoryID: 'water',
+										categoryName: 'lake'},
+
+									{	activityId:'swimming',
+										categoryID: 'water',
+										categoryName: 'pond'},
+
+									{	activityId:'swimming',
+										categoryID: 'water',
+										categoryName: 'stream_pool'},
+
+									];
+					break;
+				case 'jogging':
+					transformedActivityList = [
+									{	activityId:'jogging',
+										categoryID: 'natural',
+										categoryName: 'wood'},
+
+									{	activityId:'jogging',
+										categoryID: 'landuse',
+										categoryName: 'forest'},
+
+									];
+					break;
+				case 'hiking':
+					transformedActivityList = [
+									{	activityId:'hiking',
+										categoryID: 'natural',
+										categoryName: 'hill'},
+
+									{	activityId:'hiking',
+										categoryID: 'natural',
+										categoryName: 'peak'},
+
+									{	activityId:'hiking',
+										categoryID: 'natural',
+										categoryName: 'ridge'},
+									];
+					break;
+				case 'surfing':
+			transformedActivityList = [
+
+								{	activityId:'surfing',
+									categoryID: 'water',
+									categoryName: 'lake'},
+
+								{	activityId:'surfing',
+									categoryID: 'water',
+									categoryName: 'pond'},
+
+								{	activityId:'surfing',
+									categoryID: 'water',
+									categoryName: 'stream_pool'},
+
+								];
+					break;
+/*				case 'foodAndDrink':
+					transformedActivityList = [
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'bar'},
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'bbq'},
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'biergarten'},
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'cafe'},
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'fast_food'},
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'food_court'},	
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'ice_cream'},	
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'pub'},	
+
+								{	activityId:'foodAndDrink',
+									categoryID: 'amenity',
+									categoryName: 'restaurant'},	
+
+								];
+					break;
+*/				default:
+					// statements_def
+					console.log('activityInputString does not match!');
+					break;
+			}
+			
+			//console.log('chosenCityCoordinates: ', chosenCityCoordinates)
+			activityList = transformedActivityList;
+
+			//console.log('transformedActivityList: ', activityList)
+
+			map.setCenter(chosenCityCoordinates);
+
+			setTimeout(() => {
+			  getOverpassInterestingNodesAround(chosenCityCoordinates, rangeInput);
+			}, 30)
+			
+
+
+}
 
 
 
