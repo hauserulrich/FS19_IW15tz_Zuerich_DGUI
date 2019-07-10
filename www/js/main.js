@@ -1,4 +1,4 @@
-var cities=["Bern","Luzern", "Genf","Chur","Lugano"];
+var cities=["Bern","Luzern", "Genf","Chur","Lugano", "St.Gallen"];
 //var cities=["Chur", "Luzern"];
 var chosenCity;
 var loc;
@@ -95,6 +95,9 @@ function createCard(chosenCity){
 		  case "Lugano":
 		 	cityimg.src="../images/Lugano.jpeg";
 		    break;
+		  case "St.Gallen":
+		  	cityimg.src="../images/StGallen.jpg";
+		  	break;
 		  default:
 		    cityimg.src="";
 		    cityimg.alt="kein Bild vorhanden";
@@ -120,7 +123,7 @@ function createCard(chosenCity){
 	cardsubtitle.className="card-subtitle mb-2 text-muted";
 	let strtemperature = loc.observation[0].temperature;
 	let floattemperature=Math.round(parseFloat(strtemperature));//Temperatur wird in float umgewandelt und mathematisch gerundet
-	console.log(Math.round(strtemperature));
+	//console.log(Math.round(strtemperature));
 	cardsubtitle.innerHTML=floattemperature+" C°";
 
 	var cardicon=document.createElement("img");
