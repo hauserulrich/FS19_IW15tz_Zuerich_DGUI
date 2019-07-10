@@ -68,6 +68,14 @@ $(document).ready(function(){
 });
 
 
+//Use Prototype function to get the dayOfToday Stringrepresentation of the Date
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
+
 function cityLoop(){
 	for (i in cities){
 		chosenCity=cities[i];
@@ -995,8 +1003,6 @@ function addInfoBubbleForOSM(placesList) {
   	generateMarkers(placesList)
 
 }
-
-
 
 
 
