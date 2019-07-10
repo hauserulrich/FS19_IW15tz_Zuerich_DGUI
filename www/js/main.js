@@ -5,14 +5,23 @@ var cities=["Bern","Luzern", "Genf","Chur","Lugano", "St.Gallen"];
 //var cities=["Chur", "Luzern"];
 var chosenCity;
 var loc;
+var map = {};
+//var defaultLayers = {}
+var ui = {}
+var populatedPlacesList = []
+var forecastList = []
+var forecastForSelectedDate = null;
+var noForecast= true;
+var interestingPlaceList = []
+var activityList = [];
 
-
-
-
-
-
-
-
+var rangeInput = '5000';
+var windInput = {min: 0, max: 10};
+var temperatureInput = {min: -30, max: 50}
+var rainFallExcluded = false
+var SnowFallExcluded = false
+var markerGroup = null;
+var filterConditionViolatedArray= []
 
 
 
@@ -69,6 +78,95 @@ function cityLoop(){
 
 //********** dealing with userInput of form element **************
 
+function handleSubmit(e){
+	if(e.preventDefault()){
+		e.preventDefault()
+		return false
+	}
+
+	
+	
+	windInput = {min: 0, max: 10};
+	temperatureInput = {min: -30, max: 50}
+	rainFallExcluded = false
+	SnowFallExcluded = false
+	 
+
+	let userCityInputString = document.getElementById('userCityInput').value;
+	let userDateInputString = document.getElementById('userDateInput').value;
+	let userActivityInputString = document.getElementById('userActivityInput').value;
+
+	if(document.getElementById('userRangeInput') != null){
+
+		rangeInput = document.getElementById('userRangeInput').value;
+
+		if(document.getElementById('minWind').value != undefined){
+
+			windInput["min"] = document.getElementById('minWind').value;
+		}
+	
+		if(document.getElementById('maxWind').value != undefined){
+	
+			
+			windInput["max"] = document.getElementById('maxWind').value;
+		}
+	
+		if(document.getElementById('minTemp').value != undefined){
+	
+			let userMinTemperatureInputString 
+			temperatureInput['min']= document.getElementById('minTemp').value;
+		}
+	
+		if(document.getElementById('maxTemp').value != undefined){
+	 
+			temperatureInput['max']= document.getElementById('maxTemp').value;
+		}
+	
+		if(document.getElementById('rainFallInput') != null){
+			
+			rainFallExcluded = document.getElementById('rainFallInput').checked;
+		}
+	
+		if(document.getElementById('SnowFallExcluded') != null){
+			SnowFallExcluded = document.getElementById('SnowFallInput').ckecked;
+		}
+	}
+
+	
+	
+	//console.log('windMin: ', windInput.min)
+	//console.log('windMax: ', windInput.max)
+	//console.log('windInput: ', windInput)
+	//console.log('temeratureMin: ', temperatureInput.min)
+	//console.log('temeratureMax: ', temperatureInput.max)
+	//console.log('temperatureInput: ', temperatureInput)
+	//console.log('rainFallExcluded: ', rainFallExcluded)
+	//console.log('SnowFallExcluded: ', SnowFallExcluded)
+
+
+/*
+	console.log('place Input: ', userCityInputString);
+	console.log('date Input: ', userDateInputString);
+	console.log('newDate.value: ', new Date().toDateInputValue())
+	console.log('activity Input: ', userActivityInputString);
+	console.log('range Input: ', rangeInput);
+*/	
+	//console.log('place Input: ', userCityInputString);
+	
+
+	//getOverpassSpecifiedCity(userCityInputString, userRangeInput, userActivityInputString)
+	//getOverpassTransformedActivityList(userCityInputString, userRangeInput, userActivityInputString)
+	if(userDateInput === new Date().toDateInputValue()){
+		getWeatherObservationJSON(userCityInputString);
+	}
+
+	else{
+		getWeather7DayForecastJSON(userCityInputString);
+	}
+
+	
+		
+}
 
 
 
