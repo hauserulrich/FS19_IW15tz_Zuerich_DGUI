@@ -1173,6 +1173,7 @@ function generateMarkers(placesList){
 //group =  The group holding the new marker
 //coordinates = The location of the marker
 //html = Data associated with the marker
+//activityList = global variable for the chosen activity
 function addMarkerToGroup(group, coordinate, html) {
 	switch(activityList[0].activityId){
 		case 'swimming':
