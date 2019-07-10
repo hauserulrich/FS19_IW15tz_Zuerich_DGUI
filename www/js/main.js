@@ -164,7 +164,7 @@ function handleSubmit(e){
 
 	//getOverpassSpecifiedCity(userCityInputString, userRangeInput, userActivityInputString)
 	//getOverpassTransformedActivityList(userCityInputString, userRangeInput, userActivityInputString)
-	if((String(userDateInputString).includes(dateOfTodayString)){
+	if((String(userDateInputString).includes(dateOfTodayString))){
 		getWeatherObservationJSON(userCityInputString);
 	}
 
@@ -663,7 +663,7 @@ function getOverpassInterestingNodesAround(coordinates, range){
 
 
 // checks if conditions for activities are satisfied,
-// creates content for get_recommendation_card(recommendation, cardTitle, cardDescription)
+// creates content for get_recommendation_card(recommendation, cardTitle, cardDescription) and calls it
 // and calls addInfoBubbleForOSM(interestingPlacesList)
 //includes call for checkIfFiltersNotViolated
 function checkConditionsForActivity(interestingPlaceList){
@@ -790,6 +790,185 @@ function checkConditionsForActivity(interestingPlaceList){
 		get_recommendation_card(recommendation, cardTitle, cardDescription)
 	}
 }
+
+
+// checks if conditions for filters are not violated,
+// creates content for get_recommendation_card(recommendation, cardTitle, cardDescription) and calls it
+// gets called by checkConditionsForActivity(interestingPlaceList)
+function checkIfFiltersNotViolated(){
+
+	//console.log('ReachedFilters')
+
+	let recommendation = '';
+	let cardTitle = '';
+	let cardDescription = '';
+	let tempString=''
+	let windString=''
+	filterConditionViolatedArray = [];
+
+	//console.log('forecastForSelectedDate.beaufortScale: ', forecastForSelectedDate.beaufortScale)
+	if ((forecastForSelectedDate != undefined) && (forecastForSelectedDate.comfort != undefined) && (forecastForSelectedDate.comfort != '*')){
+		tempString= 'Die gefühlte Temperatur beträgt: ' + String(forecastForSelectedDate.comfort) + '°C';
+	}
+	else {
+		forecastForSelectedDate.comfort = 0;
+	}
+
+	if ((forecastForSelectedDate != undefined) && (forecastForSelectedDate.beaufortScale != undefined) && (forecastForSelectedDate.beaufortScale != '*')){
+		windString= '</br> die Windgeschwindigkeit wird mit: '+ String(forecastForSelectedDate.beaufortScale) + ' beaufort angegeben.'
+	}
+	else {
+		forecastForSelectedDate.beaufortScale = 0;
+	}
+
+
+	if((Number(temperatureInput.min) <= Number(forecastForSelectedDate.comfort)) && (Number(forecastForSelectedDate.comfort) <= Number(temperatureInput.max))){
+
+	}
+
+	else{
+		filterConditionViolatedArray.push('temperatureViolation');
+	}
+	
+
+	if((Number(windInput.min) <= Number(forecastForSelectedDate.beaufortScale)) && (Number(forecastForSelectedDate.beaufortScale) <= Number(windInput.max))){
+	
+	}
+
+	else{
+		filterConditionViolatedArray.push('windViolation');
+	}
+
+	if(rainFallExcluded){
+
+		if(forecastForSelectedDate.rainFall === "*"){
+				filterConditionViolatedArray.push('rainUncertain')						
+			}
+		
+		else{
+				filterConditionViolatedArray.push('rainViolation')
+			}
+		
+	}
+
+	if(SnowFallExcluded){
+	
+		if(forecastForSelectedDate.snowFall === "*"){
+				filterConditionViolatedArray.push('snowUncertain')
+			}
+		
+		else{
+				filterConditionViolatedArray.push('snowViolation')
+			}
+
+		
+	}
+
+	if (filterConditionViolatedArray.length > 0){
+		$.each(filterConditionViolatedArray, (i, violationString)=>{
+
+			//console.log('violationString: ', violationString)
+
+			switch (violationString) {
+				case "temperatureViolation":
+					recommendation = 'no';
+					cardTitle = "Dein Filterkriterium: Temperatur (min: "+ temperatureInput.min + " °C, max: "+ temperatureInput.max + " °C) ist nicht erfüllt.";
+														
+	
+					cardDescription = 	tempString +
+										windString +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+	
+					get_recommendation_card(recommendation, cardTitle, cardDescription)
+					break;
+
+				case "windViolation":
+					recommendation = 'no';
+					cardTitle = "Dein Filterkriterium: Windgeschwindigkeit (min: "+ windInput.min + " , max: "+ windInput.max+ ") ist nicht erfüllt.";
+														
+	
+					cardDescription = 	tempString +
+										windString +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+	
+					get_recommendation_card(recommendation, cardTitle, cardDescription)
+					break;
+
+
+				case "rainViolation":
+					recommendation = 'no';
+					cardTitle = "Es wird wahrscheinlich leider regnen...";
+														
+	
+					cardDescription = 	tempString +
+										windString +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+			
+					get_recommendation_card(recommendation, cardTitle, cardDescription)
+					break;
+
+				case "rainUncertain":
+					recommendation = 'no';
+					cardTitle = "Es konnte nicht festgestellt werden ob es regnen wird...";
+														
+	
+					cardDescription = 	tempString +
+										windString +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+			
+					get_recommendation_card(recommendation, cardTitle, cardDescription)
+					break;
+
+
+
+
+				case "snowViolation":
+					recommendation = 'no';
+					cardTitle = "Es wird wahrscheinlich leider schneien...";
+														
+	
+					cardDescription = 	tempString +
+										windString +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+			
+					get_recommendation_card(recommendation, cardTitle, cardDescription)
+
+					break;
+
+				case "snowUncertain":
+					recommendation = 'no';
+					cardTitle = "Es konnte nicht festgestellt werden ob es schneien wird...";
+														
+	
+					cardDescription = 	tempString +
+										windString +
+										'</br> und es wurden ' + String(interestingPlaceList.length) + ' mögliche Orte gefunden.'
+			
+					get_recommendation_card(recommendation, cardTitle, cardDescription)
+
+					break;
+
+				default:
+					 console.log('something went wrong in the filterConditionEvaluation')
+					break;
+			}
+
+		})
+	return false;
+	}
+
+	else{
+		return true;
+	}
+	
+
+
+}
+
+
+
+
+
 
 
 
