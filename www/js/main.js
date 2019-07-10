@@ -200,9 +200,9 @@ function getWeatherJSONForCityLoop(chosenCity){
 				  loc=data.observations.location[i];
 				  }
 				};
-			createCard(chosenCity);
 
 			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude}
+			createCard(chosenCity);
 
 		},
 
@@ -232,7 +232,7 @@ function getWeatherObservationJSON(chosenCity){
 				  loc=data.observations.location[i];
 				  }
 				};
-			createCard(chosenCity);
+			
 
 			coordinatesForActivities = {lat: loc.latitude, lng: loc.longitude}
 
