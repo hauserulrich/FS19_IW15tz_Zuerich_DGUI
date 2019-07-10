@@ -295,9 +295,7 @@ function getWeatherObservationJSON(chosenCity){
 			map.setCenter(coordinatesForActivities);
 
 			let userActivityInputString = document.getElementById('userActivityInput').value;
-			if(rangeInput != '5000'){
-				rangeInput = document.getElementById('userRangeInput').value;
-			}
+
 			
 
 
@@ -363,9 +361,7 @@ function getWeather7DayForecastJSON(chosenCity){
 
 			
 			let userActivityInputString = document.getElementById('userActivityInput').value;
-			if(rangeInput != '5000'){
-				rangeInput = document.getElementById('userRangeInput').value;
-			}
+
 			
 			let userDateInput = document.getElementById('userDateInput').value;
 			
