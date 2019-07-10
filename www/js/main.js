@@ -1010,7 +1010,7 @@ function createCard(chosenCity){
 	var x=document.getElementById("localWeather");
 	var divcolsm=document.createElement("div");
 	x.appendChild(divcolsm);
-	divcolsm.className="col-sm";
+	divcolsm.className="col-xs-12 col-md-4 col-lg-2";
 
     var divcard=document.createElement("div");
 	divcolsm.appendChild(divcard);
