@@ -33,25 +33,26 @@
             <!--START Main form ROW 1-->
             <div class="rowForm">
                 <div class="row justify-content-center">
-                    <form class="form-inline">
+                    <form class="form-inline" id="userFormular">
                         <div class="form-inline input">
-                            <input type="text" class="form-control col " placeholder="Wohin?" id="place" required>
+                            <input type="text" class="form-control col " placeholder="Wohin?" id="userCityInput" required>
                         </div>
                         <!-- START Fenster WAS? !-->
                         <div class="form-inline input">
                             <!-- <input type="text" class="form-control" placeholder="was?"> !-->
-                            <select class="form-control col text-muted" id="activity" required>
+                            <select class="form-control col text-muted" id="userActivityInput" required>
                                 <option value="" disabled selected>Was?</option>
-                                <option>Schwimmen</option>
-                                <option>Aktivität 2</option>
-                                <option>Aktivität 3</option>
-                                <option>Aktivität 4</option>
+                                <option value='swimming'>Schwimmen in einem stehenden Gewässer</option>
+                                <option value='jogging'>Joggen in einem Wald</option>
+                                <option value='surfing'>Windsurfen auf einem stehenden Gewässer</option>
+                                <option value='hiking'>Auf einen Hügel oder Berg wandern</option>
+                                <!-- <option value='foodAndDrink'>Essen & Trinken</option> -->
                             </select>
                         </div>
                         <!-- END Fenster WAS? !-->
                         <!-- START Fenster WANN? !-->
                         <div class="form-inline input">
-                            <input class="form-control col" placeholder="Wann?" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+                            <input class="form-control col" placeholder="Wann?" onfocus="(this.type='date')" onblur="(this.type='text')" id="userDateInput" required>
                         </div>
                         <!-- END Fenster WANN? !-->
                         <!-- START Button mit Plus: Auswahl der Filter bei Suche !-->
@@ -126,7 +127,7 @@
     <!--END Div Container for the first part of the page-->
     <!--START Div Container for recommendation card-->
     <div class="container recommendation_container" id="recommendationcard">
-        
+
     </div>
     <!--End Div Container for recommendation card-->
     <!--START Div Container for Map-->
@@ -137,11 +138,11 @@
     	</div>
     </div>
     <!--End Div Container for Map-->
-    <!--Start Div Container for Resulttable-->	
+    <!--Start Div Container for Resulttable-->
     <div class="container result_container" id="resultlist">
 
     </div>
-    <!--End Div Container for Resulttable-->		
+    <!--End Div Container for Resulttable-->
 
     <!--START Div Container for the second part of the page (Wetter)-->
     <div class="container-fluid text-center">
