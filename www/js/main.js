@@ -2,11 +2,9 @@
 
 
 var cities=["Bern","Luzern", "Genf","Chur","Lugano", "St.Gallen"];
-//var cities=["Chur", "Luzern"];
 var chosenCity;
 var loc;
 var map = {};
-var defaultLayers = {}
 var ui = {}
 var populatedPlacesList = []
 var forecastList = []
@@ -1247,7 +1245,7 @@ function get_recommendation_card(recommendation, cardtitel, description) {
 function renderlist(resultlist){
 	$("#resultlist").empty(); // Clear all the Content inside the div "Resultlist"
 	//Create Button for Tabellenansicht
-	$('#resultlist').append('<br><button class="btn btn-primary my-3" type="button" '+
+	$('#resultlist').append('<br><button class="btn btn-info my-3" type="button" '+
 							'data-toggle="collapse" data-target="#collapselist" '+
 							'aria-expanded="false" aria-controls="collapselist">'+
 							'Tabellenansicht</button> <div class="collapse" id="collapselist">');
